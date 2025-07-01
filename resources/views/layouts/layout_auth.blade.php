@@ -7,6 +7,9 @@
 
     <title>@yield('title')</title>
 
+    {{-- Icon --}}
+    <link rel="icon" href="{{ asset('images/logo_solo.svg') }}" type="image/png">
+
     {{-- Tailwind --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
