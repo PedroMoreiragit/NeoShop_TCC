@@ -16,6 +16,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
-        "remixicon": "^4.6.0"
+        "remixicon": "^4.6.0",
+        "scrollreveal": "^4.0.9"
     }
 }
