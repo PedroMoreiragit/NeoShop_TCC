@@ -13,7 +13,7 @@
     {{-- Tailwind --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    {{-- Remixed Icons --}}
+    {{-- JS and CSS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>

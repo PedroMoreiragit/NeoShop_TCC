@@ -55,7 +55,7 @@
                 {{-- Button --}}
                 <div class="text-center mb-6">
                     <button
-                        class="text-white font-semibold text-xl bg-base rounded-lg py-2 w-full hover:bg-dark">Cadastrar-se</button>
+                        class="text-white font-semibold text-xl bg-base_color rounded-lg py-2 w-full hover:bg-dark">Cadastrar-se</button>
                 </div>
             </form>
             {{-- Register --}}

@@ -35,7 +35,7 @@
                 {{-- Button --}}
                 <div class="text-center mb-6">
                     <button
-                        class="text-white font-semibold text-xl bg-base rounded-lg py-2 w-full hover:bg-dark">Enviar</button>
+                        class="text-white font-semibold text-xl bg-base_color rounded-lg py-2 w-full hover:bg-dark">Enviar</button>
                 </div>
             </form>
             {{-- Recognize --}}
