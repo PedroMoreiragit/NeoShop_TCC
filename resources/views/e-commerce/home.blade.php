@@ -10,9 +10,11 @@
             {{-- Swipper --}}
             <div class="swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner.png') }}" alt="Logo">
+                    <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner_1.png') }}" alt="Logo">
                     </div>
-                    <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner2.png') }}" alt="Logo">
+                    <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner_2.png') }}" alt="Logo">
+                    </div>
+                    <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner_3.png') }}" alt="Logo">
                     </div>
                 </div>
             </div>
@@ -73,7 +75,7 @@
             </div>
 
             {{-- Products --}}
-            <div class="p-8 text-center">
+            <div class="p-8">
                 <div class="inline-grid grid-cols-5 gap-6">
 
 
@@ -346,7 +348,7 @@
                 </div>
             </div>
 
-             <div class="p-8 text-center">
+             <div class="p-8">
                 <div class="inline-grid grid-cols-5 gap-6">
 
 

@@ -122,8 +122,8 @@
         </div>
 
         {{-- Advertising --}}
-        <div class="text-center">
-            <span class="text-xs text-gray-500">Neoshop!® é uma marca registrada de Neoshop S.A | CNPJ:
+        <div class="text-center max-w-6xl">
+            <span class="text-xs text-gray-500 ">Neoshop!® é uma marca registrada de Neoshop S.A | CNPJ:
                 05.570.714/0001-59 | Todos os direitos
                 reservados. Os preços anunciados neste site ou via e-mail promocional podem ser alterados sem prévio
                 aviso. O neoshop! não é responsável por erros descritivos. As fotos contidas nesta página são
