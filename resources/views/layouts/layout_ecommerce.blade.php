@@ -10,9 +10,6 @@
     {{-- Icon --}}
     <link rel="icon" href="{{ asset('images/logo_solo.svg') }}" type="image/png">
 
-    {{-- Tailwind --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     {{-- JS and CSS --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -27,7 +24,7 @@
                 <div class="flex gap-10 items-center">
                     {{-- Menu --}}
                     <div>
-                        <button>
+                        <button id="menu-btn">
                             <i class="ri-menu-fill font-bold text-3xl text-white hover:text-blue_purple"></i>
                         </button>
                     </div>
@@ -68,7 +65,7 @@
                             <i class="ri-shopping-cart-2-line"></i>
                         </button>
 
-                        <button class="hover:text-blue_purple">
+                        <button id="fav-btn" class="hover:text-blue_purple">
                             <i class="ri-heart-line"></i>
                         </button>
                     </div>
@@ -93,6 +90,94 @@
             <div class="border-r border-gray-500"></div>
             <a href="" class="hover:text-blue_purple">notebooks</a>
         </div>
+
+        {{-- Menu --}}
+        <nav>
+            <div id="sidebar"
+                class="fixed top-0 left-0 h-full flex flex-col justify-between w-2/12  bg-dark_blue_gray text-white p-6 transform -translate-x-full transition-transform duration-300 z-50">
+
+                <div>
+                    <div class="mb-6 flex justify-between">
+                        <div class="flex items-center gap-2">
+                            <i class="ri-account-circle-fill text-6xl text-white"></i>
+                            <span class="font-semibold text-sm">ACESSE SUA CONTA</span>
+                        </div>
+                        <button id="menuClose">
+                            <i class="ri-close-fill text-xl hover:text-blue_purple"></i>
+                        </button>
+                    </div>
+
+
+                    <ul class="flex flex-col gap-5 text-xl">
+                        <a href="" class="hover:text-blue_purple">
+                            <li class="flex items-center gap-2"><i class="ri-home-9-fill "></i>Minha conta</li>
+                        </a>
+                        <a href="" class="hover:text-blue_purple">
+                            <li class="flex items-center gap-2"><i class="ri-truck-fill"></i> Meus pedidos</li>
+                        </a>
+                        <a href="" class="hover:text-blue_purple">
+                            <li class="flex items-center gap-2"><i class="ri-wallet-fill"></i> Carteira</li>
+                        </a>
+                        <a href="" class="hover:text-blue_purple">
+                            <li class="flex items-center gap-2"><i class="ri-customer-service-fill"></i> Atendimento ao
+                                cliente</li>
+                        </a>
+                    </ul>
+                </div>
+
+                <div class="mt-8 flex flex-col gap-5 text-center text-xl">
+                    <a href="login"
+                        class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>
+                    <a href="registro"
+                        class="w-full mt-2 text-white text-sm font-bold hover:text-blue_purple">CADASTRE-SE</a>
+                </div>
+
+            </div>
+        </nav>
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
+
+
+        {{-- Favoritos --}}
+        <nav>
+            <div id="sidebar-Fav"
+                class="fixed top-0 right-0 h-full w-2/12 bg-white p-6 transform translate-x-full transition-transform duration-300 z-50">
+
+                <div class="flex justify-between mb-5">
+                    <h1 class="font-bold uppercase">Favoritos</h1>
+                    <button id="FavClose">
+                        <i class="ri-close-fill text-xl hover:text-blue_purple"></i>
+                    </button>
+                </div>
+
+
+                <div class="flex flex-col gap-5">
+                    <a href="">
+                        <div class="border p-5 flex justify-between items-center ">
+                            <div class="flex flex-col items-center gap-2">
+                                <img class="w-20" src="{{ asset('images/product_example.png') }}" alt="">
+                                <span class="text-base_color text-xs font-semibold">R$ 1435,50</span>
+                            </div>
+                    </a>
+
+                    <div class="flex gap-2">
+                        {{-- Heart --}}
+                        <button>
+                            <i class="ri-poker-hearts-fill text-base_color text-2xl"></i>
+                        </button>
+                        {{-- Trash --}}
+                        <button>
+                            <i class="ri-delete-bin-fill text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            </div>
+        </nav>
+
+
+        <div id="overlay-Fav" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
     </header>
 
     <main>

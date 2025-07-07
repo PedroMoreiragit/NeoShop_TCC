@@ -3,10 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 
-
+// APP //
 
 // Atuh //
-
 Route::get('login', function () {
     return view('/auth/login');
 });
@@ -25,7 +24,12 @@ Route::get('redefinir_senha', function () {
 
 
 // Home
-
 Route::get('/', function () {
     return view('/e-commerce/home');
+});
+
+
+// Product
+Route::get('produto', function () {
+    return view('/e-commerce/product');
 });

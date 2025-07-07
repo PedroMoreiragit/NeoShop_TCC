@@ -8,7 +8,7 @@
 
         <section class="mb-5">
             {{-- Swipper --}}
-            <div class="swiper">
+            <div class="swiperHome swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><img class="w-screen" src="{{ asset('images/banner_1.png') }}" alt="Logo">
                     </div>
@@ -75,7 +75,7 @@
             </div>
 
             {{-- Products --}}
-            <div class="p-8">
+            <div class="p-8 lg:flex lg:justify-center">
                 <div class="inline-grid grid-cols-5 gap-6">
 
 
@@ -124,7 +124,7 @@
 
                         {{-- Button --}}
                         <div class="flex justify-center">
-                            <a href="#"
+                            <a href="produto"
                                 class="uppercase px-20 py-2 hover:bg-blue_gray bg-dark_blue_gray text-white font-semibold rounded-lg">
                                 Comprar
                             </a>
@@ -348,7 +348,7 @@
                 </div>
             </div>
 
-             <div class="p-8">
+             <div class="p-8 lg:flex lg:justify-center">
                 <div class="inline-grid grid-cols-5 gap-6">
 
 
