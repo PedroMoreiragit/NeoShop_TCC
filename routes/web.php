@@ -33,3 +33,9 @@ Route::get('/', function () {
 Route::get('produto', function () {
     return view('/e-commerce/product');
 });
+
+
+// Search
+Route::get('pesquisar', function () {
+    return view('/e-commerce/search');
+});
