@@ -1,6 +1,6 @@
 @extends('layouts.layout_ecommerce')
 
-@section('title', 'Home - NeoShop')
+@section('title', 'Pesquisa - NeoShop')
 
 
 @section('content')

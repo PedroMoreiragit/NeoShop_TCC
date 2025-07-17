@@ -23,19 +23,24 @@ Route::get('redefinir_senha', function () {
 });
 
 
-// Home
+
+// E-commerce
 Route::get('/', function () {
     return view('/e-commerce/home');
 });
 
-
-// Product
 Route::get('produto', function () {
     return view('/e-commerce/product');
 });
 
-
-// Search
 Route::get('pesquisar', function () {
     return view('/e-commerce/search');
+});
+
+Route::get('carrinho', function() {
+    return view('/e-commerce/cart');
+});
+
+Route::get('finalizar', function() {
+    return view('/e-commerce/finishPurchase');
 });
