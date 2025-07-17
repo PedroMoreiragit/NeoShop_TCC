@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
 
     <header>
         <nav class="p-9 bg-dark_blue_gray">
@@ -30,7 +30,7 @@
                     </div>
 
                     {{-- Logo --}}
-                    <div>
+                    <div class="hidden lg:block">
                         <a href="/">
                             <img class="w-48" src="{{ asset('images/logo.svg') }}" alt="Logo">
                         </a>
@@ -49,7 +49,7 @@
 
                 <div class="flex gap-8">
                     {{-- Login or Register --}}
-                    <div class="flex items-center">
+                    <div class="lg:flex items-center hidden lg:visible">
                         <i class="ri-account-circle-fill text-6xl text-white"></i>
                         <div>
                             <span class="text-white font-semibold text-xs"><a href="login"
@@ -75,7 +75,8 @@
         </nav>
 
         {{-- Filters --}}
-        <div class=" text-white font-semibold bg-blue_gray flex justify-between px-10 py-2 uppercase">
+        <div
+            class="text-white font-semibold bg-blue_gray flex gap-6 px-6 py-2 uppercase overflow-x-auto whitespace-nowrap lg:justify-between">
             <a href="" class="hover:text-blue_purple">Hardware</a>
             <div class="border-r border-gray-500"></div>
             <a href="" class="hover:text-blue_purple">PC gamer</a>
@@ -94,10 +95,10 @@
         {{-- Menu --}}
         <nav>
             <div id="sidebar"
-                class="fixed top-0 left-0 h-full flex flex-col justify-between w-2/12  bg-dark_blue_gray text-white p-6 transform -translate-x-full transition-transform duration-300 z-50">
+                class="fixed top-0 left-0 h-full flex flex-col justify-between w-10/12 sm:w-6/12 md:w-4/12 lg:w-2/12  bg-dark_blue_gray text-white p-6 transform -translate-x-full transition-transform duration-300 z-50">
 
                 <div>
-                    <div class="mb-6 flex justify-between">
+                    <div class="mb-6  justify-between hidden lg:flex">
                         <div class="flex items-center gap-2">
                             <i class="ri-account-circle-fill text-6xl text-white"></i>
                             <span class="font-semibold text-sm">ACESSE SUA CONTA</span>
@@ -107,21 +108,38 @@
                         </button>
                     </div>
 
+                    <a href="/">
+                        <img class="w-48" src="{{ asset('images/logo.svg') }}" alt="Logo">
+                    </a>
 
-                    <ul class="flex flex-col gap-5 text-xl">
-                        <a href="" class="hover:text-blue_purple">
-                            <li class="flex items-center gap-2"><i class="ri-home-9-fill "></i>Minha conta</li>
-                        </a>
-                        <a href="" class="hover:text-blue_purple">
-                            <li class="flex items-center gap-2"><i class="ri-truck-fill"></i> Meus pedidos</li>
-                        </a>
-                        <a href="" class="hover:text-blue_purple">
-                            <li class="flex items-center gap-2"><i class="ri-wallet-fill"></i> Carteira</li>
-                        </a>
-                        <a href="" class="hover:text-blue_purple">
-                            <li class="flex items-center gap-2"><i class="ri-customer-service-fill"></i> Atendimento ao
-                                cliente</li>
-                        </a>
+
+                    <ul class="flex flex-col gap-5 text-xl mt-5">
+
+                        <li>
+                            <a href="/" class="flex items-center gap-2 hover:text-blue_purple">
+                                <i class="ri-home-9-fill"></i> Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                                <i class="ri-user-fill"></i> Minha conta
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                                <i class="ri-truck-fill"></i> Meus pedidos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                                <i class="ri-wallet-fill"></i> Carteira
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                                <i class="ri-customer-service-fill"></i> Atendimento ao cliente
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -140,7 +158,7 @@
         {{-- Favoritos --}}
         <nav>
             <div id="sidebar-Fav"
-                class="fixed top-0 right-0 h-full w-2/12 bg-white p-6 transform translate-x-full transition-transform duration-300 z-50">
+                class="fixed top-0 right-0 h-full w-10/12 sm:w-6/12 md:w-4/12 lg:w-2/12 bg-white p-6 transform translate-x-full transition-transform duration-300 z-50">
 
                 <div class="flex justify-between mb-5">
                     <h1 class="font-bold uppercase">Favoritos</h1>
@@ -180,7 +198,7 @@
         <div id="overlay-Fav" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"></div>
     </header>
 
-    <main>
+    <main class="flex-grow">
         @yield('content')
     </main>
 
