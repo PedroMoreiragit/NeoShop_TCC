@@ -37,10 +37,33 @@ Route::get('pesquisar', function () {
     return view('/e-commerce/search');
 });
 
+// Carrinho
 Route::get('carrinho', function() {
     return view('/e-commerce/cart');
 });
 
+// Finalizando Compra
+
 Route::get('finalizar', function() {
     return view('/e-commerce/finishPurchase');
+});
+
+// Pix
+Route::get('pix', function() {
+    return view('/e-commerce/qrCodeFinishPurchase');
+});
+
+// Boleto
+Route::get('boleto', function() {
+    return view('/e-commerce/ticketFinishPurchase');
+});
+
+// Cartão
+Route::get('cartao', function() {
+    return view('/e-commerce/cardFinishPurchase');
+});
+
+// Sucesso
+Route::get('finalizada', function() {
+    return view('/e-commerce/successFinishPurchase');
 });
