@@ -1,6 +1,6 @@
 @extends('layouts.layout_ecommerce')
 
-@section('title', 'Finalizar - NeoShop')
+@section('title', 'Finalizar Compra')
 
 
 @section('content')
@@ -9,6 +9,14 @@
         <section>
 
             <div class="mt-6 border rounded-md p-4 shadow-sm max-w-6xl mx-auto">
+
+                <div class="mb-6">
+                    <a href="carrinho" class="flex gap-2 text-lg items-center hover:text-base_color">
+                        <i class="ri-arrow-left-long-line"></i>
+                        <span>voltar</span>
+                    </a>
+                </div>
+
                 <div class="flex items-center gap-2 mb-4 text-dark_blue_gray font-semibold text-base">
                     <i class="ri-wallet-fill text-base_color"></i>
                     <span>FORMA DE PAGAMENTO</span>
