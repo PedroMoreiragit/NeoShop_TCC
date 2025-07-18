@@ -1,6 +1,6 @@
 @extends('layouts.layout_ecommerce')
 
-@section('title', 'Product - NeoShop')
+@section('title', 'nome do produto')
 
 
 @section('content')
@@ -48,10 +48,10 @@
                             com 10% OFF</p>
 
                         <div class="flex gap-2">
-                            <button
+                            <a href="finalizar"
                                 class="mt-6 bg-dark_blue_gray text-white px-32 py-3 rounded-md text-2xl hover:bg-dark font-bold">
                                 COMPRAR
-                            </button>
+                            </a>
                             <button class="mt-6 bg-dark_blue_gray text-white px-6 py-3 rounded-md text-xl hover:bg-dark">
                                 <i class="ri-shopping-cart-2-line"></i>
                             </button>

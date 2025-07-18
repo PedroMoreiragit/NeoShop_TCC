@@ -75,10 +75,10 @@
                             </div>
 
                             <div class="mt-6 flex justify-center">
-                                <button
+                                <a href="finalizar"
                                     class="px-4 py-3 bg-dark_blue_gray text-white rounded-md font-bold text-sm hover:bg-base_color transition">
                                     IR PARA O PAGAMENTO
-                                </button>
+                                </a>
                             </div>
                         </div>
 
