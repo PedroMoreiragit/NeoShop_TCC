@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="pedidos" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-truck-fill"></i> Meus pedidos
                             </a>
                         </li>

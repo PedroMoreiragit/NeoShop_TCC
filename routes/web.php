@@ -42,6 +42,12 @@ Route::get('carrinho', function() {
     return view('/e-commerce/cart');
 });
 
+// Pedidos
+Route::get('pedidos', function() {
+    return view('/e-commerce/orders');
+});
+
+
 // Finalizando Compra
 
 Route::get('finalizar', function() {
