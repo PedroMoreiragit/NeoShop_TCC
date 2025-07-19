@@ -121,7 +121,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="conta" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-user-fill"></i> Minha conta
                             </a>
                         </li>
@@ -131,12 +131,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
-                                <i class="ri-wallet-fill"></i> Carteira
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="ajuda" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-customer-service-fill"></i> Atendimento ao cliente
                             </a>
                         </li>

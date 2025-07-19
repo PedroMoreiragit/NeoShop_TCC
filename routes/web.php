@@ -42,15 +42,36 @@ Route::get('carrinho', function() {
     return view('/e-commerce/cart');
 });
 
+// Conta
+Route::get('conta', function() {
+    return view('/e-commerce/profile');
+});
+
+Route::get('editar', function() {
+    return view('/e-commerce/profileEdit');
+});
+
+// Metodos de pagameto
+Route::get('metodos_de_pagameto', function() {
+    return view('/e-commerce/paymentMethods');
+});
+
+
+
 // Pedidos
 Route::get('pedidos', function() {
     return view('/e-commerce/orders');
 });
 
+// Atendimento ao cliente
+Route::get('ajuda', function() {
+    return view('/e-commerce/help');
+});
+
 
 // Finalizando Compra
 
-Route::get('finalizar', function() {
+Route::get('finalizar_compra', function() {
     return view('/e-commerce/finishPurchase');
 });
 

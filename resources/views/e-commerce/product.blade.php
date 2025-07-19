@@ -48,7 +48,7 @@
                             com 10% OFF</p>
 
                         <div class="flex gap-2">
-                            <a href="finalizar"
+                            <a href="finalizar_compra"
                                 class="mt-6 bg-dark_blue_gray text-white px-32 py-3 rounded-md text-2xl hover:bg-dark font-bold">
                                 COMPRAR
                             </a>
