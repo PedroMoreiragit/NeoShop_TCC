@@ -22,6 +22,9 @@ Route::get('redefinir_senha', function () {
     return view('/auth/reset_password');
 });
 
+Route::get('obrigado', function () {
+    return view('/auth/thanks');
+});
 
 
 // E-commerce
@@ -93,4 +96,10 @@ Route::get('cartao', function() {
 // Sucesso
 Route::get('finalizada', function() {
     return view('/e-commerce/successFinishPurchase');
+});
+
+
+//ERRO
+Route::get('erro', function() {
+    return view('/e-commerce/error/error');
 });
