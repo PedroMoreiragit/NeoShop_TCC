@@ -3,31 +3,40 @@
 use Illuminate\Support\Facades\Route;
 
 
-// APP //
 
-// Atuh //
+/*
+|--------------------------------------------------------------------------
+| Auth
+|--------------------------------------------------------------------------
+*/
 Route::get('login', function () {
-    return view('/auth/login');
+    return view('auth.login');
 });
 
 Route::get('registro', function () {
-    return view('/auth/register');
+    return view('auth.register');
 });
 
 Route::get('recuperacao_de_senha', function () {
-    return view('/auth/reset_password_email');
+    return view('auth.reset_password_email');
 });
 
 Route::get('redefinir_senha', function () {
-    return view('/auth/reset_password');
+    return view('auth.reset_password');
 });
 
 Route::get('obrigado', function () {
-    return view('/auth/thanks');
+    return view('auth.thanks');
 });
 
 
-// E-commerce
+
+
+/*
+|--------------------------------------------------------------------------
+| E-commerce
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('/e-commerce/home');
 });
@@ -41,65 +50,76 @@ Route::get('pesquisar', function () {
 });
 
 // Carrinho
-Route::get('carrinho', function() {
+Route::get('carrinho', function () {
     return view('/e-commerce/cart');
 });
 
 // Conta
-Route::get('conta', function() {
+Route::get('conta', function () {
     return view('/e-commerce/profile');
 });
 
-Route::get('editar', function() {
+Route::get('editar', function () {
     return view('/e-commerce/profileEdit');
 });
 
 // Metodos de pagameto
-Route::get('metodos_de_pagameto', function() {
+Route::get('metodos_de_pagameto', function () {
     return view('/e-commerce/paymentMethods');
 });
 
 
 
 // Pedidos
-Route::get('pedidos', function() {
+Route::get('pedidos', function () {
     return view('/e-commerce/orders');
 });
 
 // Atendimento ao cliente
-Route::get('ajuda', function() {
+Route::get('ajuda', function () {
     return view('/e-commerce/help');
 });
 
 
 // Finalizando Compra
 
-Route::get('finalizar_compra', function() {
+Route::get('finalizar_compra', function () {
     return view('/e-commerce/finishPurchase');
 });
 
 // Pix
-Route::get('pix', function() {
+Route::get('pix', function () {
     return view('/e-commerce/qrCodeFinishPurchase');
 });
 
 // Boleto
-Route::get('boleto', function() {
+Route::get('boleto', function () {
     return view('/e-commerce/ticketFinishPurchase');
 });
 
 // Cartão
-Route::get('cartao', function() {
+Route::get('cartao', function () {
     return view('/e-commerce/cardFinishPurchase');
 });
 
 // Sucesso
-Route::get('finalizada', function() {
+Route::get('finalizada', function () {
     return view('/e-commerce/successFinishPurchase');
 });
 
 
 //ERRO
-Route::get('erro', function() {
+Route::get('erro', function () {
     return view('/e-commerce/error/error');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+Route::get('home', function () {
+    return view('/dashboard/home');
 });
