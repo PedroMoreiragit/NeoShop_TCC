@@ -37,14 +37,17 @@ Route::get('obrigado', function () {
 | E-commerce
 |--------------------------------------------------------------------------
 */
+//home
 Route::get('/', function () {
     return view('/e-commerce/home');
 });
 
+//produto
 Route::get('produto', function () {
     return view('/e-commerce/product');
 });
 
+//pesquisar
 Route::get('pesquisar', function () {
     return view('/e-commerce/search');
 });
@@ -54,11 +57,12 @@ Route::get('carrinho', function () {
     return view('/e-commerce/cart');
 });
 
-// Conta
+//conta
 Route::get('conta', function () {
     return view('/e-commerce/profile');
 });
 
+//editar perfil
 Route::get('editar', function () {
     return view('/e-commerce/profileEdit');
 });
@@ -83,6 +87,7 @@ Route::get('ajuda', function () {
 
 // Finalizando Compra
 
+//finalizar
 Route::get('finalizar_compra', function () {
     return view('/e-commerce/finishPurchase');
 });
