@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 
@@ -9,13 +11,12 @@ use Illuminate\Support\Facades\Route;
 | Auth
 |--------------------------------------------------------------------------
 */
-Route::get('login', function () {
-    return view('auth.login');
-});
+Route::get('register', [RegisterController::class, 'show'])->name('register');
+Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('registro', function () {
-    return view('auth.register');
-});
+Route::get('login', [LoginController::class, 'show'])->name('login');
+Route::post('login', [LoginController::class, 'store']);
+
 
 Route::get('recuperacao_de_senha', function () {
     return view('auth.reset_password_email');

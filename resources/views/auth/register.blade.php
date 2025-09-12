@@ -19,35 +19,35 @@
                 <span class="text-gray-500">Preencha os dados abaixo para continuar</span>
             </div>
             {{-- Form --}}
-            <form action="" method="post">
+            <form action="{{ route('register')}}" method="post">
                 @csrf
                 <div class="flex flex-col gap-10 mb-10">
 
                     {{-- Name  --}}
                     <div class="border-b pb-2 flex gap-2 font-semibold">
                         <i class="ri-user-line text-white font-sm"></i>
-                        <input type="text" placeholder="Nome completo"
+                        <input type="text" name="name" placeholder="Nome completo"
                             class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm" required>
                     </div>
 
                     {{-- Email  --}}
                     <div class="border-b pb-2  flex gap-2 font-semibold">
                         <i class="ri-mail-line text-white font-sm"></i>
-                        <input type="text" placeholder="E-mail"
+                        <input type="text" name="email" placeholder="E-mail"
                             class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm" required>
                     </div>
 
                     {{-- Password  --}}
                     <div class="border-b pb-2 flex gap-2 font-semibold">
                         <i class="ri-lock-line text-white text-sm"></i>
-                        <input type="password" placeholder="Senha"
+                        <input type="password" name="password" placeholder="Senha"
                             class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm" required>
                     </div>
 
                     {{-- Password Confirmation  --}}
                     <div class="border-b pb-2 flex gap-2 font-semibold">
                         <i class="ri-shield-line text-white text-sm"></i>
-                        <input type="password" placeholder="Confirmar senha"
+                        <input type="password" name="password_confirmation" placeholder="Confirmar senha"
                             class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm" required>
                     </div>
                 </div>
