@@ -81,7 +81,7 @@
             </div>
 
             {{-- Products --}}
-            <div class=" flex items-center justify-center">
+            <div class=" flex items-center justify-center px-5">
                 <div class="inline-grid lg:grid-cols-5 grid-cols-1 mx-auto mt-5 gap-6">
 
 
@@ -354,7 +354,7 @@
                 </div>
             </div>
 
-            <div class=" flex items-center justify-center">
+            <div class=" flex items-center justify-center px-5 mb-5">
                 <div class="inline-grid lg:grid-cols-5 grid-cols-1 mx-auto mt-5 gap-6">
 
 

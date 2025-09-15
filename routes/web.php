@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\EmailCheckController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ThanksController;
+use App\Http\Controllers\Store\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,9 +51,10 @@ Route::controller(ThanksController::class)->group(function () {
 | E-commerce
 |--------------------------------------------------------------------------
 */
-//home
-Route::get('/', function () {
-    return view('/e-commerce/home');
+
+// Home
+Route::controller(HomeController::class)->group(function () {
+    Route::get('home', 'show')->name('home');
 });
 
 //produto
@@ -138,6 +140,6 @@ Route::get('erro', function () {
 | Dashboard
 |--------------------------------------------------------------------------
 */
-Route::get('home', function () {
+Route::get('dash', function () {
     return view('/dashboard/home');
 });
