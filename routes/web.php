@@ -1,35 +1,47 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
-
+use App\Http\Controllers\Auth\EmailCheckController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ThanksController;
 
 /*
 |--------------------------------------------------------------------------
 | Auth
 |--------------------------------------------------------------------------
 */
-Route::get('register', [RegisterController::class, 'show'])->name('register');
-Route::post('register', [RegisterController::class, 'store']);
 
-Route::get('login', [LoginController::class, 'show'])->name('login');
-Route::post('login', [LoginController::class, 'store']);
-
-
-Route::get('recuperacao_de_senha', function () {
-    return view('auth.reset_password_email');
+// Register
+Route::controller(RegisterController::class)->group(function () {
+    Route::get('register', 'show')->name('register');
+    Route::post('register', 'store');
 });
 
-Route::get('redefinir_senha', function () {
-    return view('auth.reset_password');
+// Login
+Route::controller(LoginController::class)->group(function () {
+    Route::get('login', 'show')->name('login');
+    Route::post('login', 'store');
 });
 
-Route::get('obrigado', function () {
-    return view('auth.thanks');
+
+// Email Check
+Route::controller(EmailCheckController::class)->group(function () {
+    Route::get('email_check', 'show')->name('email_check');
+    Route::post('email_check', 'store');
 });
 
+// Reset Password
+Route::controller(ResetPasswordController::class)->group(function () {
+    Route::get('reset_password', 'show')->name('reset_password');
+    Route::post('reset_password', 'store');
+});
+
+// Thanks
+Route::controller(ThanksController::class)->group(function () {
+    Route::get('thanks', 'show')->name('thanks');
+});
 
 
 

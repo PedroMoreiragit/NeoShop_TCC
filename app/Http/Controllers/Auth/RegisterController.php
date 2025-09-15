@@ -15,19 +15,24 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        $credentials = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:customers',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        Customer::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        if ($credentials) {
+            Customer::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+            ]);
 
-        return redirect()->route('login');
+            return redirect()->route('thanks');
+        }
+
+        return redirect()->route('home');
     }
 
 }
