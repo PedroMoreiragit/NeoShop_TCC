@@ -18,30 +18,26 @@
     <div class="flex min-h-screen w-full bg-dark_blue_gray text-white">
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="w-64 bg-blue_gray p-6 hidden md:block">
-            <div class="flex items-center justify-between mb-10">
+        <aside id="sidebar" class="w-64 bg-blue_gray p-6 hidden md:flex flex-col h-screen">
+            <a href="/" class="flex items-center justify-between mb-10">
                 <img src="{{ asset('images/logo.svg') }}" class="w-48" alt="NeoShop Logo">
                 <button id="sidebarToggle" class="md:hidden text-light">
                     <i class="ri-close-line text-2xl"></i>
                 </button>
-            </div>
+            </a>
 
-            <nav class="flex flex-col gap-4 text-md">
+            <nav class="flex flex-col gap-4 text-md flex-1">
                 <a href="#" class="flex items-center gap-3 text-base_color bg-dark_blue_gray px-3 py-2 rounded">
                     <i class="ri-dashboard-line"></i> Dashboard
                 </a>
                 <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-box-3-line"></i> Produtos
-                </a>
+                    <i class="ri-box-3-line"></i> Produtos</a>
                 <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-shopping-cart-line"></i> Pedidos
-                </a>
+                    <i class="ri-shopping-cart-line"></i> Pedidos</a>
                 <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-user-line"></i> Clientes
-                </a>
+                    <i class="ri-user-line"></i> Clientes</a>
                 <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-bar-chart-line"></i> Relatórios
-                </a>
+                    <i class="ri-bar-chart-line"></i> Relatórios</a>
 
                 <h2 class="text-light uppercase mt-6 mb-2">Categorias</h2>
                 <a href="#" class="hover:text-light">Hardware</a>
@@ -50,8 +46,15 @@
                 <a href="#" class="hover:text-light">Componentes</a>
                 <a href="#" class="hover:text-light">Notebooks</a>
                 <a href="#" class="hover:text-light">Promoções</a>
+
+                <div class="mt-auto">
+                    <a href="logout" class="flex items-center gap-2 hover:text-blue_purple lg:text-lg">
+                        <i class="ri-logout-box-line"></i> Sair
+                    </a>
+                </div>
             </nav>
         </aside>
+
 
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
@@ -71,7 +74,7 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const toggleButton = document.getElementById('sidebarToggle');
             const sidebar = document.getElementById('sidebar');
 

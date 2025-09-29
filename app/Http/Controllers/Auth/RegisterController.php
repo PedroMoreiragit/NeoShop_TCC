@@ -8,11 +8,20 @@ use App\Models\Customer;
 
 class RegisterController extends Controller
 {
+    /**
+     * Summary of show
+     * @return \Illuminate\Contracts\View\View
+     */
     public function show()
     {
         return view('auth.register');
     }
 
+    /**
+     * Summary of store
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Request $request)
     {
 

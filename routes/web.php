@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -7,6 +9,7 @@ use App\Http\Controllers\Auth\EmailCheckController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ThanksController;
 use App\Http\Controllers\Store\HomeController;
+use app\Http\Controllers\AdminLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,9 @@ Route::controller(RegisterController::class)->group(function () {
 Route::controller(LoginController::class)->group(function () {
     Route::get('login', 'show')->name('login');
     Route::post('login', 'store');
+
+    // Logout
+    Route::get('logout', 'logout')->name('logout');
 });
 
 
@@ -54,8 +60,9 @@ Route::controller(ThanksController::class)->group(function () {
 
 // Home
 Route::controller(HomeController::class)->group(function () {
-    Route::get('home', 'show')->name('home');
+    Route::get('/', 'index')->name('home');
 });
+
 
 //produto
 Route::get('produto', function () {
@@ -72,61 +79,63 @@ Route::get('carrinho', function () {
     return view('/e-commerce/cart');
 });
 
-//conta
-Route::get('conta', function () {
-    return view('/e-commerce/profile');
+Route::middleware(['auth'])->group(function () {
+
+    //conta
+    Route::get('conta', function () {
+        return view('/e-commerce/profile');
+    });
+
+    //editar perfil
+    Route::get('editar', function () {
+        return view('/e-commerce/profileEdit');
+    });
+
+    // Metodos de pagameto
+    Route::get('metodos_de_pagameto', function () {
+        return view('/e-commerce/paymentMethods');
+    });
+
+
+
+    // Pedidos
+    Route::get('pedidos', function () {
+        return view('/e-commerce/orders');
+    });
+
+    // Atendimento ao cliente
+    Route::get('ajuda', function () {
+        return view('/e-commerce/help');
+    });
+
+
+    // Finalizando Compra
+
+    //finalizar
+    Route::get('finalizar_compra', function () {
+        return view('/e-commerce/finishPurchase');
+    });
+
+    // Pix
+    Route::get('pix', function () {
+        return view('/e-commerce/qrCodeFinishPurchase');
+    });
+
+    // Boleto
+    Route::get('boleto', function () {
+        return view('/e-commerce/ticketFinishPurchase');
+    });
+
+    // Cartão
+    Route::get('cartao', function () {
+        return view('/e-commerce/cardFinishPurchase');
+    });
+
+    // Sucesso
+    Route::get('finalizada', function () {
+        return view('/e-commerce/successFinishPurchase');
+    });
 });
-
-//editar perfil
-Route::get('editar', function () {
-    return view('/e-commerce/profileEdit');
-});
-
-// Metodos de pagameto
-Route::get('metodos_de_pagameto', function () {
-    return view('/e-commerce/paymentMethods');
-});
-
-
-
-// Pedidos
-Route::get('pedidos', function () {
-    return view('/e-commerce/orders');
-});
-
-// Atendimento ao cliente
-Route::get('ajuda', function () {
-    return view('/e-commerce/help');
-});
-
-
-// Finalizando Compra
-
-//finalizar
-Route::get('finalizar_compra', function () {
-    return view('/e-commerce/finishPurchase');
-});
-
-// Pix
-Route::get('pix', function () {
-    return view('/e-commerce/qrCodeFinishPurchase');
-});
-
-// Boleto
-Route::get('boleto', function () {
-    return view('/e-commerce/ticketFinishPurchase');
-});
-
-// Cartão
-Route::get('cartao', function () {
-    return view('/e-commerce/cardFinishPurchase');
-});
-
-// Sucesso
-Route::get('finalizada', function () {
-    return view('/e-commerce/successFinishPurchase');
-});
-
 
 //ERRO
 Route::get('erro', function () {
@@ -140,6 +149,7 @@ Route::get('erro', function () {
 | Dashboard
 |--------------------------------------------------------------------------
 */
-Route::get('dash', function () {
-    return view('/dashboard/home');
+
+Route::middleware(['auth:admin'])->group(function () {
+    Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });

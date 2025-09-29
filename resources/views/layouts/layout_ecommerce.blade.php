@@ -49,21 +49,31 @@
 
                 <div class="flex gap-8">
                     {{-- Login or Register --}}
-                    <div class="lg:flex items-center hidden lg:visible">
-                        <i class="ri-account-circle-fill text-6xl text-white"></i>
-                        <div>
-                            <span class="text-white font-semibold text-xs"><a href="login"
-                                    class="hover:text-blue_purple hover:underline hover:underline-offset-2">ENTRE</a>
-                                ou <br> <a class="hover:text-blue_purple hover:underline hover:underline-offset-2"
-                                    href="registro">CADASTRE-SE</a></span>
+                    @guest
+                        <div class="lg:flex items-center hidden lg:visible">
+                            <i class="ri-account-circle-fill text-6xl text-white"></i>
+                            <div>
+                                <span class="text-white font-semibold text-xs"><a href="login"
+                                        class="hover:text-blue_purple hover:underline hover:underline-offset-2">ENTRE</a>
+                                    ou <br> <a class="hover:text-blue_purple hover:underline hover:underline-offset-2"
+                                        href="registro">CADASTRE-SE</a></span>
+                            </div>
                         </div>
-                    </div>
+                    @endguest
+
+                    @auth
+                        <div class="lg:flex items-center hidden lg:visible">
+                            <a href="conta">
+                                <i class="ri-account-circle-fill text-6xl text-white"></i>
+                            </a>
+                        </div>
+                    @endauth
 
                     {{-- Cart and Favorites --}}
                     <div class="text-white text-3xl flex gap-5 items-center">
-                        <button class="hover:text-blue_purple">
+                        <a href="carrinho" class="hover:text-blue_purple">
                             <i class="ri-shopping-cart-2-line"></i>
-                        </button>
+                        </a>
 
                         <button id="fav-btn" class="hover:text-blue_purple">
                             <i class="ri-heart-line"></i>
@@ -98,20 +108,17 @@
                 class="fixed top-0 left-0 h-full flex flex-col justify-between w-10/12 sm:w-6/12 md:w-4/12 lg:w-2/12  bg-dark_blue_gray text-white p-6 transform -translate-x-full transition-transform duration-300 z-50">
 
                 <div>
-                    <div class="mb-6  justify-between hidden lg:flex">
-                        <div class="flex items-center gap-2">
-                            <i class="ri-account-circle-fill text-6xl text-white"></i>
-                            <span class="font-semibold text-sm">ACESSE SUA CONTA</span>
-                        </div>
+
+                    <div class="mb-6 gap-4 justify-between hidden lg:flex">
+                        <a href="/">
+                            <img class="w-48" src="{{ asset('images/logo.svg') }}" alt="Logo">
+                        </a>
+
+
                         <button id="menuClose">
                             <i class="ri-close-fill text-xl hover:text-blue_purple"></i>
                         </button>
                     </div>
-
-                    <a href="/">
-                        <img class="w-48" src="{{ asset('images/logo.svg') }}" alt="Logo">
-                    </a>
-
 
                     <ul class="flex flex-col gap-5 text-xl mt-5">
 
@@ -138,12 +145,22 @@
                     </ul>
                 </div>
 
-                <div class="mt-8 flex flex-col gap-5 text-center text-xl">
-                    <a href="login"
-                        class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>
-                    <a href="registro"
-                        class="w-full mt-2 text-white text-sm font-bold hover:text-blue_purple">CADASTRE-SE</a>
-                </div>
+                @guest('admin')
+                    <div class="mt-8 flex flex-col gap-5 text-center text-xl">
+                        <a href="login"
+                            class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>
+                        <a href="registro"
+                            class="w-full mt-2 text-white text-sm font-bold hover:text-blue_purple">CADASTRE-SE</a>
+                    </div>
+                @endguest
+
+
+                @auth
+                    <div>
+                        <a href="logout" class="flex items-center gap-2 hover:text-blue_purple lg:text-xl"><i
+                                class="ri-logout-box-line"></i> Sair</a>
+                    </div>
+                @endauth
 
             </div>
         </nav>
@@ -162,27 +179,28 @@
                     </button>
                 </div>
 
+                @auth
+                    <div class="flex flex-col gap-5">
+                        <a href="">
+                            <div class="border p-5 flex justify-between items-center ">
+                                <div class="flex flex-col items-center gap-2">
+                                    <img class="w-20" src="{{ asset('images/product_example.png') }}" alt="">
+                                    <span class="text-base_color text-xs font-semibold">R$ 1435,50</span>
+                                </div>
+                        </a>
 
-                <div class="flex flex-col gap-5">
-                    <a href="">
-                        <div class="border p-5 flex justify-between items-center ">
-                            <div class="flex flex-col items-center gap-2">
-                                <img class="w-20" src="{{ asset('images/product_example.png') }}" alt="">
-                                <span class="text-base_color text-xs font-semibold">R$ 1435,50</span>
-                            </div>
-                    </a>
-
-                    <div class="flex gap-2">
-                        {{-- Heart --}}
-                        <button>
-                            <i class="ri-poker-hearts-fill text-base_color text-2xl"></i>
-                        </button>
-                        {{-- Trash --}}
-                        <button>
-                            <i class="ri-delete-bin-fill text-2xl"></i>
-                        </button>
+                        <div class="flex gap-2">
+                            {{-- Heart --}}
+                            <button>
+                                <i class="ri-poker-hearts-fill text-base_color text-2xl"></i>
+                            </button>
+                            {{-- Trash --}}
+                            <button>
+                                <i class="ri-delete-bin-fill text-2xl"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                @endauth
             </div>
 
 
@@ -231,7 +249,7 @@
 
     </footer>
 
-        @yield('scripts')
+    @yield('scripts')
 
 </body>
 
