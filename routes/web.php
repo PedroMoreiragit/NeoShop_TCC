@@ -150,6 +150,6 @@ Route::get('erro', function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 });

@@ -145,7 +145,7 @@
                     </ul>
                 </div>
 
-                @guest('admin')
+                @guest
                     <div class="mt-8 flex flex-col gap-5 text-center text-xl">
                         <a href="login"
                             class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>

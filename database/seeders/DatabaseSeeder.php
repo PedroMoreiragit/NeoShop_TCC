@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Customer;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,15 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        Customer::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // cria um admin de teste
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+            'role_id' => 1, // assume que 1 = admin no seeder de roles
         ]);
 
-        $this->call([
-            AdminSeeder::class,
+        // cria um customer de teste
+        User::factory()->create([
+            'name' => 'Customer User',
+            'email' => 'customer@example.com',
+            'password' => Hash::make('password'),
+            'role_id' => 2, // assume que 2 = customer no seeder de roles
         ]);
     }
 }

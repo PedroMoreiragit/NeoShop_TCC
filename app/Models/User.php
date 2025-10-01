@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Admin extends Authenticatable
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     protected $fillable = [
         'name',
@@ -15,9 +18,7 @@ class Admin extends Authenticatable
         'password',
     ];
 
-
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'admin_roles');
-    }
+    protected $hidden = [
+        'password',
+    ];
 }

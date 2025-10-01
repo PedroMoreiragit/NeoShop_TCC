@@ -4,38 +4,29 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
-    /**
-     * Summary of show
-     * @return \Illuminate\Contracts\View\View
-     */
     public function show()
     {
         return view('auth.register');
     }
 
-    /**
-     * Summary of store
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-
         $credentials = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:customers',
+            'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
         if ($credentials) {
-            Customer::create([
+            User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'role_id' => 2
             ]);
 
             return redirect()->route('thanks');
@@ -43,5 +34,4 @@ class RegisterController extends Controller
 
         return redirect()->route('home');
     }
-
 }
