@@ -11,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $user = Auth::user(); // troquei $customer para $user
+            $user = Auth::user(); 
             return view('e-commerce.home', ['user' => $user]);
         }
 

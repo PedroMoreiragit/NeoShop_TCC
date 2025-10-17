@@ -13,20 +13,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // cria um admin de teste
+
+        $this->call(RoleSeeder::class);
+
+
         User::factory()->create([
             'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('password'),
-            'role_id' => 1, // assume que 1 = admin no seeder de roles
+            'email' => 'admin@neoshop.com',
+            'password' => Hash::make('12345678'),
+            'role_id' => 1,
         ]);
 
-        // cria um customer de teste
+
         User::factory()->create([
             'name' => 'Customer User',
-            'email' => 'customer@example.com',
+            'email' => 'customer@neoshop.com',
             'password' => Hash::make('password'),
-            'role_id' => 2, // assume que 2 = customer no seeder de roles
+            'role_id' => 2,
         ]);
     }
 }
