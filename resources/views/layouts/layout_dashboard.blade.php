@@ -27,29 +27,48 @@
             </a>
 
             <nav class="flex flex-col gap-4 text-md flex-1">
-                <a href="#" class="flex items-center gap-3 text-base_color bg-dark_blue_gray px-3 py-2 rounded">
+
+                <a href="{{ route('dashboard') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('dashboard') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
                     <i class="ri-dashboard-line"></i> Dashboard
                 </a>
-                <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-box-3-line"></i> Produtos</a>
-                <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-shopping-cart-line"></i> Pedidos</a>
-                <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-user-line"></i> Clientes</a>
-                <a href="#" class="flex items-center gap-3 hover:text-light">
-                    <i class="ri-bar-chart-line"></i> Relatórios</a>
 
-                <h2 class="text-light uppercase mt-6 mb-2">Categorias</h2>
+                <a href="{{ route('products') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('products') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-box-3-line"></i> Produtos</a>
+
+                <a href="{{ route('orders') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('orders') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-box-3-line"></i> Pedidos</a>
+
+                <a href="{{ route('customers') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('customers') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-box-3-line"></i> Clientes</a>
+
+                <a href="{{ route('reports') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('reports') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-box-3-line"></i> Relatórios</a>
+
+
+                {{-- <h2 class="text-light uppercase mt-6 mb-2">Categorias</h2>
                 <a href="#" class="hover:text-light">Hardware</a>
                 <a href="#" class="hover:text-light">PC Gamer</a>
                 <a href="#" class="hover:text-light">Periféricos</a>
                 <a href="#" class="hover:text-light">Componentes</a>
                 <a href="#" class="hover:text-light">Notebooks</a>
-                <a href="#" class="hover:text-light">Promoções</a>
+                <a href="#" class="hover:text-light">Promoções</a> --}}
 
-                <div class="mt-auto">
-                    <a href="logout" class="flex items-center gap-2 hover:text-blue_purple lg:text-lg">
-                        <i class="ri-logout-box-line"></i> Sair
+                <div class="mt-auto flex flex-col gap-5">
+                    <a href="{{ route('home') }}"
+                        class=" rounded-lg transition-colors duration-300 ease-in-out
+          text-white hover:text-blue_purple hover:bg-gray-800 lg:text-lg">
+                        <i class="ri-store-line text-lg"></i> Ir à Loja
+                    </a>
+
+                    <a href="{{ route('logout') }}"
+                        class=" rounded-lg transition-colors duration-300 ease-in-out
+          text-white hover:text-blue_purple hover:bg-gray-800 lg:text-lg">
+                       <i class="ri-logout-box-line text-lg"></i> Sair
                     </a>
                 </div>
             </nav>

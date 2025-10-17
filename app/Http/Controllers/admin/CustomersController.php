@@ -4,12 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class CreateProductController extends Controller
+class CustomersController extends Controller
 {
-    public function index()
+     public function index()
     {
         if (!Auth::check()) {
             return redirect()->route('home');
@@ -21,6 +20,6 @@ class CreateProductController extends Controller
             return redirect()->route('home');
         }
 
-        return view('dashboard.products');
+        return view('dashboard.customers');
     }
 }

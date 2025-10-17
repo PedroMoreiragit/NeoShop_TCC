@@ -5,8 +5,8 @@
 @section('content')
     <main>
         <section>
-            <div class="bg-white min-h-screen flex items-center justify-center p-4">
-                <div class="bg-blue_gray text-white w-full max-w-2xl rounded-2xl shadow-xl p-6 space-y-8">
+            <div class="bg-white flex items-center justify-center p-4">
+                <div class="bg-blue_gray text-white w-full max-w-2xl rounded-2xl shadow-xl p-6 space-y-8 mt-10">
 
                     <div class="flex flex-col items-center gap-3">
                         <div
@@ -15,9 +15,12 @@
                         </div>
                         <h2 class="text-2xl font-bold">{{ auth()->user()->name }}</h2>
                         <p class="text-light text-sm">{{ auth()->user()->email }}</p>
+                        @customer
                         <button class="text-sm text-base_color hover:underline">Editar Perfil</button>
+                        @endcustomer
                     </div>
 
+                    @customer
                     <div class="bg-dark_blue_gray p-5 rounded-2xl shadow-md space-y-3">
                         <h3 class="text-lg font-semibold flex items-center gap-2">
                             <i class="ri-user-3-line text-base_color text-xl"></i>
@@ -38,6 +41,7 @@
                         <p class="text-sm text-light">São Paulo - SP, 01000-000</p>
                         <button class="text-sm text-base_color hover:underline mt-1">Editar Endereço</button>
                     </div>
+                    @endcustomer
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         @customer

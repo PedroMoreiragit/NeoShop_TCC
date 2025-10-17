@@ -1,7 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
-use App\Http\Controllers\DashboardController;
+
+use App\Http\Controllers\admin\CustomersController;
+use App\Http\Controllers\admin\OrdersController;
+use App\Http\Controllers\admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\admin\ReportsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -151,5 +155,9 @@ Route::get('erro', function () {
 */
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('products', [ProductsController::class, 'index'])->name('products');
+    Route::get('orders', [OrdersController::class, 'index'])->name('orders');
+    Route::get('customers', [CustomersController::class, 'index'])->name('customers');
+    Route::get('reports', [ReportsController::class, 'index'])->name('reports');
 });
