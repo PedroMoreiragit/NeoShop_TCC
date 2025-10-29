@@ -1,58 +1,9 @@
 <?php
 
 
-use App\Http\Controllers\admin\CustomersController;
-use App\Http\Controllers\admin\OrdersController;
-use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\admin\ReportsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\EmailCheckController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\ThanksController;
-use App\Http\Controllers\Store\HomeController;
-use app\Http\Controllers\AdminLoginController;
 
-/*
-|--------------------------------------------------------------------------
-| Auth
-|--------------------------------------------------------------------------
-*/
-
-// Register
-Route::controller(RegisterController::class)->group(function () {
-    Route::get('register', 'show')->name('register');
-    Route::post('register', 'store');
-});
-
-// Login
-Route::controller(LoginController::class)->group(function () {
-    Route::get('login', 'show')->name('login');
-    Route::post('login', 'store');
-
-    // Logout
-    Route::get('logout', 'logout')->name('logout');
-});
-
-
-// Email Check
-Route::controller(EmailCheckController::class)->group(function () {
-    Route::get('email_check', 'show')->name('email_check');
-    Route::post('email_check', 'store');
-});
-
-// Reset Password
-Route::controller(ResetPasswordController::class)->group(function () {
-    Route::get('reset_password', 'show')->name('reset_password');
-    Route::post('reset_password', 'store');
-});
-
-// Thanks
-Route::controller(ThanksController::class)->group(function () {
-    Route::get('thanks', 'show')->name('thanks');
-});
 
 
 
@@ -161,3 +112,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('customers', [CustomersController::class, 'index'])->name('customers');
     Route::get('reports', [ReportsController::class, 'index'])->name('reports');
 });
+
+
+require __DIR__ . '/auth.php';
