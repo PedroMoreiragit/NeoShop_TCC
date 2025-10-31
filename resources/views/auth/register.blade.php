@@ -53,11 +53,21 @@
                             class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm">
                     </div>
 
-                    {{-- Password  --}}
-                    <div class="border-b pb-2 flex gap-2 font-semibold">
-                        <i class="ri-lock-line text-white text-sm"></i>
-                        <input type="password" name="password" placeholder="Senha"
-                            class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm">
+                    {{-- Password --}}
+                    <div class="border-b pb-2 flex items-center font-semibold relative">
+                        <i class="ri-lock-line text-white text-sm mr-2"></i>
+
+                        <!-- Container para o input e o botão -->
+                        <div class="relative w-full">
+                            <input id="password" type="password" placeholder="Senha" name="password"
+                                class="bg-transparent placeholder-white text-white w-full focus:outline-none font-sm pr-8">
+
+                            <!-- Botão do olho -->
+                            <button type="button" id="togglePassword"
+                                class="absolute right-0 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 focus:outline-none">
+                                <i id="eyeIcon" class="ri-eye-off-line text-lg"></i>
+                            </button>
+                        </div>
                     </div>
 
                     {{-- Password Confirmation  --}}
@@ -99,6 +109,20 @@
                     setTimeout(() => toast.remove(), 500);
                 }, 7000);
             });
+        });
+    </script>
+
+    {{-- Eye password --}}
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', () => {
+            const isPassword = passwordInput.type === 'password';
+            passwordInput.type = isPassword ? 'text' : 'password';
+            eyeIcon.classList.toggle('ri-eye-off-line');
+            eyeIcon.classList.toggle('ri-eye-line');
         });
     </script>
 
