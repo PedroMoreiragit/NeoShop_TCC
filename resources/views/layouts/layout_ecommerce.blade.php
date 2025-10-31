@@ -56,14 +56,14 @@
                                 <span class="text-white font-semibold text-xs"><a href="login"
                                         class="hover:text-blue_purple hover:underline hover:underline-offset-2">ENTRE</a>
                                     ou <br> <a class="hover:text-blue_purple hover:underline hover:underline-offset-2"
-                                        href="registro">CADASTRE-SE</a></span>
+                                        href="register">CADASTRE-SE</a></span>
                             </div>
                         </div>
                     @endguest
 
                     @auth
                         <div class="lg:flex items-center hidden lg:visible">
-                            <a href="conta">
+                            <a href="account">
                                 <i class="ri-account-circle-fill text-6xl text-white"></i>
                             </a>
                         </div>
@@ -71,7 +71,7 @@
 
                     {{-- Cart and Favorites --}}
                     <div class="text-white text-3xl flex gap-5 items-center">
-                        <a href="carrinho" class="hover:text-blue_purple">
+                        <a href="cart" class="hover:text-blue_purple">
                             <i class="ri-shopping-cart-2-line"></i>
                         </a>
 
@@ -128,17 +128,17 @@
                             </a>
                         </li>
                         <li>
-                            <a href="conta" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="account" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-user-fill"></i> Minha conta
                             </a>
                         </li>
                         <li>
-                            <a href="pedidos" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="orders" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-truck-fill"></i> Meus pedidos
                             </a>
                         </li>
                         <li>
-                            <a href="ajuda" class="flex items-center gap-2 hover:text-blue_purple">
+                            <a href="support" class="flex items-center gap-2 hover:text-blue_purple">
                                 <i class="ri-customer-service-fill"></i> Atendimento ao cliente
                             </a>
                         </li>
@@ -149,7 +149,7 @@
                     <div class="mt-8 flex flex-col gap-5 text-center text-xl">
                         <a href="login"
                             class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>
-                        <a href="registro"
+                        <a href="register"
                             class="w-full mt-2 text-white text-sm font-bold hover:text-blue_purple">CADASTRE-SE</a>
                     </div>
                 @endguest

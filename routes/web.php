@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'e-commerce.home')->name('home');
 
 // Product
-Route::view('produto', 'e-commerce.product')->name('produto');
+// Route::view('product', 'e-commerce.product')->name('product');
 
 // Search
-Route::view('pesquisar', 'e-commerce.search')->name('pesquisar');
+Route::view('search', 'e-commerce.search')->name('search');
 
 // Cart
-Route::view('carrinho', 'e-commerce.cart')->name('carrinho');
+Route::view('cart', 'e-commerce.cart')->name('cart');
 
 
 
@@ -31,36 +32,36 @@ Route::view('carrinho', 'e-commerce.cart')->name('carrinho');
 Route::middleware(['auth'])->group(function () {
 
     // Account
-    Route::view('conta', 'e-commerce.profile')->name('conta');
+    Route::view('account', 'e-commerce.profile')->name('account');
 
     // Edit Profile
-    Route::view('editar conta', 'e-commerce.profileEdit')->name('editar conta');
+    Route::view('edit-profile', 'e-commerce.profileEdit')->name('edit-profile');
 
     // Payment Methods
-    Route::view('metodos', 'e-commerce.paymentMethods')->name('metodos');
+    Route::view('methods', 'e-commerce.paymentMethods')->name('methods');
 
     // Orders
-    Route::view('pedidos', 'e-commerce.orders')->name('pedidos');
+    Route::view('orders', 'e-commerce.orders')->name('orders');
 
     // Client Support
-    // Route::view('suporte', 'e-commerce.')->name('suporte');
+    // Route::view('support', 'e-commerce.')->name('support');
 
     // Finish Order
 
     // Finishing
-    Route::view('finalizando', 'e-commerce.finishPurchase')->name('finalizando');
+    Route::view('finished', 'e-commerce.finishPurchase')->name('finished');
 
     // Pix
     Route::view('pix', 'e-commerce.qrCodeFinishPurchase')->name('pix');
 
     // Ticket
-    Route::view('boleto', 'e-commerce.ticketFinishPurchase')->name('boleto');
+    Route::view('ticket', 'e-commerce.ticketFinishPurchase')->name('ticket');
 
     // Card
-    Route::view('cartao', 'e-commerce.cardFinishPurchase')->name('cartao');
+    Route::view('card', 'e-commerce.cardFinishPurchase')->name('card');
 
     // Success
-    Route::view('sucesso', 'e-commerce.successFinishPurchase')->name('sucesso');
+    Route::view('success', 'e-commerce.successFinishPurchase')->name('success');
 
 });
 
@@ -70,17 +71,24 @@ Route::middleware(['auth'])->group(function () {
 Route::view('error', 'e-commerce.error.error')->name('error');
 
 
-
-
 // DashBoard
 
-Route::middleware(['AdminVerification'])->group(function () {
-    Route::view('dashboard', 'dashboard.dashboard')->name('dashboard');
+// Route::middleware(['AdminVerification'])->group(function () {
+
+    Route::view('dashboard', 'dashboard.home')->name('dashboard');
+
     Route::view('products', 'dashboard.products')->name('products');
+
+    Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
+    Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
+
+
     Route::view('orders', 'dashboard.orders')->name('orders');
+
     Route::view('customers', 'dashboard.customers')->name('customers');
+
     Route::view('reports', 'dashboard.reports')->name('reports');
-});
+// });
 
 
 require __DIR__ . '/auth.php';

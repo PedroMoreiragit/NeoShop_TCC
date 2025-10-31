@@ -14,8 +14,8 @@
 
 </head>
 
-<body class="bg-dark_blue_gray text-white">
-    <div class="flex min-h-screen w-full bg-dark_blue_gray text-white">
+<body class="bg-dark_blue_gray text-white overflow-hidden">
+    <div class="flex h-screen w-full bg-dark_blue_gray text-white">
 
         <!-- Sidebar -->
         <aside id="sidebar" class="w-64 bg-blue_gray p-6 hidden md:flex flex-col h-screen">
@@ -80,7 +80,7 @@
 
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col">
+        <div class="flex-1 flex flex-col min-h-0">
             <header class="p-4 md:hidden bg-blue_gray flex justify-between items-center">
                 <img src="{{ asset('images/logo.svg') }}" class="w-28" alt="NeoShop Logo">
                 <button id="sidebarToggle" class="text-light">
@@ -88,7 +88,7 @@
                 </button>
             </header>
 
-            <main class="flex-1 p-6">
+            <main class="flex-1 p-6 overflow-y-auto">
                 @yield('content')
             </main>
         </div>

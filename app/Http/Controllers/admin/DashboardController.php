@@ -25,15 +25,6 @@ class DashboardController extends Controller
 
     }
 
-
-    //crud
-    public function products()
-    {
-
-
-
-    }
-
     //crud
     public function reports()
     {

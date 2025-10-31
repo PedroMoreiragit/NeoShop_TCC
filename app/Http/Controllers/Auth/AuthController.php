@@ -54,7 +54,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
             if ($user->role->name === 'admin') {
-                return redirect()->route('dashboard.dashboard');
+                return redirect()->route('dashboard');
             }
             return redirect()->route('home');
         }

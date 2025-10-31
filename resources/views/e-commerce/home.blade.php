@@ -130,7 +130,7 @@
 
                         {{-- Button --}}
                         <div class="flex justify-center">
-                            <a href="produto"
+                            <a href="product"
                                 class="uppercase px-20 py-2 hover:bg-blue_gray bg-dark_blue_gray text-white font-semibold rounded-lg">
                                 Comprar
                             </a>
