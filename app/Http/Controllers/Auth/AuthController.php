@@ -31,7 +31,7 @@ class AuthController extends Controller
                 'role_id' => 2
             ]);
 
-            return redirect()->route('thanks');
+            return redirect()->route('auth.thanks');
         }
 
         return redirect()->route('home');
@@ -54,7 +54,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
             if ($user->role->name === 'admin') {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard.dashboard');
             }
             return redirect()->route('home');
         }
@@ -64,6 +64,19 @@ class AuthController extends Controller
         return back()->withErrors([
             'email' => 'Credenciais inválidas.',
         ]);
+    }
+
+    /**
+     * Summary of logout
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
 

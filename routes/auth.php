@@ -4,33 +4,23 @@
 use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Auth
-|--------------------------------------------------------------------------
-*/
+// Auth
 
 Route::middleware('guest')->group(function () {
 
     Route::view('register', 'auth.register')->name('register');
     Route::post('register', [AuthController::class, 'register']);
 
+    Route::view('login', 'auth.login')->name('login');
+    Route::post('login',[AuthController::class, 'login']);
+
 });
 
+Route::middleware('auth')->group( function () {
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
-// // Route::controller(RegisterController::class)->group(function () {
-// //     Route::get('register', 'show')->name('register');
-// //     Route::post('register', 'store');
-// // });
-
-// // Login
-// Route::controller(LoginController::class)->group(function () {
-//     Route::get('login', 'show')->name('login');
-//     Route::post('login', 'store');
-
-//     // Logout
-//     Route::get('logout', 'logout')->name('logout');
-// });
 
 
 // // Email Check

@@ -65,7 +65,11 @@
                         <i class="ri-store-line text-lg"></i> Ir à Loja
                     </a>
 
-                    <a href="{{ route('logout') }}"
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                            @csrf
+                        </form>
+
+                    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class=" rounded-lg transition-colors duration-300 ease-in-out
           text-white hover:text-blue_purple hover:bg-gray-800 lg:text-lg">
                        <i class="ri-logout-box-line text-lg"></i> Sair

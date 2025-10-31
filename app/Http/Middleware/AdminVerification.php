@@ -17,13 +17,13 @@ class AdminVerification
     public function handle(Request $request, Closure $next): Response
     {
 
-        $user = Auth::user();
-
         if (!Auth::check()) {
             return redirect()->route('home');
         }
 
-        if($user->role != 'admin'){
+        $user = Auth::user();
+
+        if (!$user->role || $user->role->name !== 'admin') {
             return redirect('/');
         }
 

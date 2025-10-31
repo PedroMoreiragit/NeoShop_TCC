@@ -156,8 +156,12 @@
 
 
                 @auth
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                        @csrf
+                    </form>
                     <div>
-                        <a href="logout" class="flex items-center gap-2 hover:text-blue_purple lg:text-xl"><i
+                        <a href="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                            class="flex items-center gap-2 hover:text-blue_purple lg:text-xl"><i
                                 class="ri-logout-box-line"></i> Sair</a>
                     </div>
                 @endauth

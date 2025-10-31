@@ -2,115 +2,84 @@
 
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
 
 
-/*
-|--------------------------------------------------------------------------
-| E-commerce
-|--------------------------------------------------------------------------
-*/
+
+//  E-commerce
+
 
 // Home
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
-});
+Route::view('/', 'e-commerce.home')->name('home');
+
+// Product
+Route::view('produto', 'e-commerce.product')->name('produto');
+
+// Search
+Route::view('pesquisar', 'e-commerce.search')->name('pesquisar');
+
+// Cart
+Route::view('carrinho', 'e-commerce.cart')->name('carrinho');
 
 
-//produto
-Route::get('produto', function () {
-    return view('/e-commerce/product');
-});
 
-//pesquisar
-Route::get('pesquisar', function () {
-    return view('/e-commerce/search');
-});
-
-// Carrinho
-Route::get('carrinho', function () {
-    return view('/e-commerce/cart');
-});
+// Authenticated Sessions
 
 Route::middleware(['auth'])->group(function () {
 
-    //conta
-    Route::get('conta', function () {
-        return view('/e-commerce/profile');
-    });
+    // Account
+    Route::view('conta', 'e-commerce.profile')->name('conta');
 
-    //editar perfil
-    Route::get('editar', function () {
-        return view('/e-commerce/profileEdit');
-    });
+    // Edit Profile
+    Route::view('editar conta', 'e-commerce.profileEdit')->name('editar conta');
 
-    // Metodos de pagameto
-    Route::get('metodos_de_pagameto', function () {
-        return view('/e-commerce/paymentMethods');
-    });
+    // Payment Methods
+    Route::view('metodos', 'e-commerce.paymentMethods')->name('metodos');
 
+    // Orders
+    Route::view('pedidos', 'e-commerce.orders')->name('pedidos');
 
+    // Client Support
+    // Route::view('suporte', 'e-commerce.')->name('suporte');
 
-    // Pedidos
-    Route::get('pedidos', function () {
-        return view('/e-commerce/orders');
-    });
+    // Finish Order
 
-    // Atendimento ao cliente
-    Route::get('ajuda', function () {
-        return view('/e-commerce/help');
-    });
-
-
-    // Finalizando Compra
-
-    //finalizar
-    Route::get('finalizar_compra', function () {
-        return view('/e-commerce/finishPurchase');
-    });
+    // Finishing
+    Route::view('finalizando', 'e-commerce.finishPurchase')->name('finalizando');
 
     // Pix
-    Route::get('pix', function () {
-        return view('/e-commerce/qrCodeFinishPurchase');
-    });
+    Route::view('pix', 'e-commerce.qrCodeFinishPurchase')->name('pix');
 
-    // Boleto
-    Route::get('boleto', function () {
-        return view('/e-commerce/ticketFinishPurchase');
-    });
+    // Ticket
+    Route::view('boleto', 'e-commerce.ticketFinishPurchase')->name('boleto');
 
-    // Cartão
-    Route::get('cartao', function () {
-        return view('/e-commerce/cardFinishPurchase');
-    });
+    // Card
+    Route::view('cartao', 'e-commerce.cardFinishPurchase')->name('cartao');
 
-    // Sucesso
-    Route::get('finalizada', function () {
-        return view('/e-commerce/successFinishPurchase');
-    });
-});
+    // Success
+    Route::view('sucesso', 'e-commerce.successFinishPurchase')->name('sucesso');
 
-//ERRO
-Route::get('erro', function () {
-    return view('/e-commerce/error/error');
 });
 
 
+// Error
 
-/*
-|--------------------------------------------------------------------------
-| Dashboard
-|--------------------------------------------------------------------------
-*/
+Route::view('error', 'e-commerce.error.error')->name('error');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('products', [ProductsController::class, 'index'])->name('products');
-    Route::get('orders', [OrdersController::class, 'index'])->name('orders');
-    Route::get('customers', [CustomersController::class, 'index'])->name('customers');
-    Route::get('reports', [ReportsController::class, 'index'])->name('reports');
+
+
+
+// DashBoard
+
+Route::middleware(['AdminVerification'])->group(function () {
+    Route::view('dashboard', 'dashboard.dashboard')->name('dashboard');
+    Route::view('products', 'dashboard.products')->name('products');
+    Route::view('orders', 'dashboard.orders')->name('orders');
+    Route::view('customers', 'dashboard.customers')->name('customers');
+    Route::view('reports', 'dashboard.reports')->name('reports');
 });
 
 
