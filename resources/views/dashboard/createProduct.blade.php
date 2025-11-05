@@ -23,7 +23,6 @@
             @csrf
 
 
-
             <!-- Product Name -->
             <div>
                 <label for="name" class="block text-sm font-medium mb-2 text-light">Nome do Produto</label>
@@ -91,7 +90,7 @@
             </div>
 
             <!-- Categoria -->
-            {{-- <div>
+            <div>
                 <label for="category_id" class="block text-sm font-medium mb-2 text-light">Categoria</label>
                 <select id="category_id" name="category_id"
                     class="w-full bg-dark_blue_gray border border-gray-700 rounded-xl p-3 text-white placeholder-gray-400
@@ -102,7 +101,7 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
 
             <!-- Submit Button -->

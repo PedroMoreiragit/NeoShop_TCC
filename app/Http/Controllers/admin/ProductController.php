@@ -25,14 +25,24 @@ class ProductController extends Controller
             'technical_info' => 'nullable|string|max:255',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:1',
-            'image_path' => 'nullable|string',
-            // 'category_id' => 'nullable|exists:categories,id',
+            'image_path' => 'nullable|file',
+            'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $product['category_id'] = 1;
+        $productImagePath = $request->file("image_path")->store("products");
 
-        Product::create($product);
+        $product = Product::create([
+            ... $product,
+            'image_path' => $productImagePath
+        ]);
 
         return redirect('products');
     }
+
+    public function showProduct()
+    {
+        return view('dashboard.products');
+    }
+
+
 }

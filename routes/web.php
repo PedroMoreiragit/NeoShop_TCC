@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 
@@ -77,7 +78,7 @@ Route::view('error', 'e-commerce.error.error')->name('error');
 
     Route::view('dashboard', 'dashboard.home')->name('dashboard');
 
-    Route::view('products', 'dashboard.products')->name('products');
+    Route::get('products', [ProductController::class, 'showProduct'])->name('products');
 
     Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
     Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
