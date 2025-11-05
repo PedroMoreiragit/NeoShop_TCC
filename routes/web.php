@@ -4,6 +4,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Store\StoreController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Home
-Route::view('/', 'e-commerce.home')->name('home');
+Route::get('/', [StoreController::class, 'store'])->name('home');
 
 // Product
 // Route::view('product', 'e-commerce.product')->name('product');

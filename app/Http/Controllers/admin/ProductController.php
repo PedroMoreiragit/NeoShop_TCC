@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,7 @@ class ProductController extends Controller
 
     public function showCreateForm()
     {
-        $categories = \App\Models\Category::all();
+        $categories = Category::all();
         return view('dashboard.createProduct', compact('categories'));
     }
 
@@ -29,7 +30,7 @@ class ProductController extends Controller
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $productImagePath = $request->file("image_path")->store("products");
+        $productImagePath = $request->file("image_path")->store("/public/products");
 
         $product = Product::create([
             ... $product,
@@ -41,7 +42,14 @@ class ProductController extends Controller
 
     public function showProduct()
     {
-        return view('dashboard.products');
+        $products = Product::all();
+        return view('dashboard.products', compact('products'));
+    }
+
+    public function deleteProduct($id)
+    {
+        $products = Product::findOrFail($id);
+        return redirect('products');
     }
 
 
