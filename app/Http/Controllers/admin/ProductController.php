@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+use function Pest\Laravel\delete;
+
 class ProductController extends Controller
 {
 
@@ -30,7 +32,7 @@ class ProductController extends Controller
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
-        $productImagePath = $request->file("image_path")->store("/public/products");
+        $productImagePath = $request->file("image_path")->store("/products");
 
         $product = Product::create([
             ... $product,
@@ -48,7 +50,8 @@ class ProductController extends Controller
 
     public function deleteProduct($id)
     {
-        $products = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
+        $product->delete();
         return redirect('products');
     }
 

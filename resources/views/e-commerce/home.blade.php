@@ -85,51 +85,48 @@
                 <div class="inline-grid lg:grid-cols-5 grid-cols-1 mx-auto mt-5 gap-6">
 
                     @foreach ($products as $product)
-                        <div class="border border-blue_gray rounded-lg flex flex-col  justify-center p-3  w-64">
+                        <div
+                            class="border border-blue_gray rounded-lg flex flex-col justify-between p-4 w-72 shadow-sm hover:shadow-md transition">
                             {{-- Top --}}
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center mb-2">
                                 {{-- Stars --}}
-                                <div>
-                                    <?php
-                                    $stars = 0;
-
-                                    while ($stars < 5) {
-                                        echo '<i class="ri-star-line text-gray-500"></i>';
-                                        $stars++;
-                                    }
-                                    ?>
+                                <div class="flex text-gray-500">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <i class="ri-star-line"></i>
+                                    @endfor
                                 </div>
+
                                 {{-- Favorite and Cart --}}
-                                <div class="text-gray-500 text-2xl flex gap-5 items-center">
-                                    <button class="hover:text-blue_purple">
+                                <div class="text-gray-500 text-xl flex gap-4 items-center">
+                                    <button class="hover:text-blue_purple transition">
                                         <i class="ri-shopping-cart-2-line"></i>
                                     </button>
-
-                                    <button class="hover:text-blue_purple">
+                                    <button class="hover:text-blue_purple transition">
                                         <i class="ri-heart-line"></i>
                                     </button>
                                 </div>
                             </div>
 
                             {{-- Mid --}}
-                            <div>
-                                <img src="{{ asset('images/product_example.png') }}" alt="example">
+                            <div
+                                class="w-full h-64 flex items-center justify-center overflow-hidden rounded-lg bg-gray-100 mb-4">
+                                <img src="{{ Storage::url($product->image_path) }}" alt="{{ $product->name }}"
+                                    class="w-full h-full object-cover">
                             </div>
 
                             {{-- Bottom --}}
-                            <div class="mb-4">
-                                <h1 class="font-bold">{{ $product->name }}</h1>
-                                <div class="flex flex-col">
-                                    <span class="text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
-                                    <span class="text-xs text-gray-500">Á vista no Pix <br>
-                                        ou ate 30x no cartão</span>
-                                </div>
+                            <div class="flex flex-col gap-1 mb-4">
+                                <h1 class="font-bold text-base_color truncate">{{ $product->name }}</h1>
+                                <span class="text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
+                                <span class="text-xs text-gray-500 leading-tight">
+                                    À vista no Pix <br> ou até 30x no cartão
+                                </span>
                             </div>
 
                             {{-- Button --}}
                             <div class="flex justify-center">
                                 <a href="product"
-                                    class="uppercase px-20 py-2 hover:bg-blue_gray bg-dark_blue_gray text-white font-semibold rounded-lg">
+                                    class="uppercase px-16 py-2 bg-dark_blue_gray hover:bg-blue_purple text-white font-semibold rounded-lg transition">
                                     Comprar
                                 </a>
                             </div>
@@ -140,5 +137,7 @@
                 </div>
         </section>
     </main>
+
+
 
 @endsection
