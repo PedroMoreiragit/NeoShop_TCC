@@ -84,6 +84,8 @@ Route::view('error', 'e-commerce.error.error')->name('error');
     Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
     Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
     Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
+    Route::get('update-product/{id}', [ProductController::class, 'showUpdateProduct'] )->name('update-product');
+    Route::post('update-product/{id}', [ProductController::class, 'updateProduct'])->name('update-product');
 
 
     Route::view('orders', 'dashboard.orders')->name('orders');

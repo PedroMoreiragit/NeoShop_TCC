@@ -29,10 +29,10 @@
                             <p class="text-base_color font-bold mt-1">R$ {{ $product->price }}</p>
                         </div>
                         <div class="flex gap-2 ml-4">
-                            <button
+                            <a href="update-product/{{ $product->id }}}"
                                 class="bg-blue_purple text-white px-3 py-1.5 rounded-md hover:bg-base_color transition duration-200">
                                 Editar
-                            </button>
+                            </a>
 
                             <form action="delete-product/{{ $product->id }}" method="POST">
                                 @csrf
