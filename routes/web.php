@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [StoreController::class, 'store'])->name('home');
 
 // Product
-// Route::view('product', 'e-commerce.product')->name('product');
+Route::get('product/{slug}', [StoreController::class, 'viewProduct'])->name('product');
 
 // Search
 Route::view('search', 'e-commerce.search')->name('search');

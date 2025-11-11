@@ -72,21 +72,24 @@
         {{-- Products list --}}
         <section>
             {{-- Title --}}
-            <div class="bg-blue_gray py-5 px-10 flex justify-between items-center">
-                <h1 class="uppercase text-white text-2xl font-bold">Produtos em destaque </h1>
-                <div class="text-white">
-                    <span class="uppercase text-xl">Termina em <i class="ri-time-line"></i></span>
-                    <span class="text-xl font-bold">24:00:00</span>
+            <div
+                class="bg-blue_gray py-5 px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <h1 class="uppercase text-white text-xl sm:text-2xl font-bold text-center sm:text-left">
+                    Produtos em destaque
+                </h1>
+                <div class="text-white flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                    <span class="uppercase text-base sm:text-xl">Termina em <i class="ri-time-line"></i></span>
+                    <span class="text-lg sm:text-xl font-bold">24:00:00</span>
                 </div>
             </div>
 
             {{-- Products --}}
-            <div class=" flex items-center justify-center px-5 mb-5">
-                <div class="inline-grid lg:grid-cols-5 grid-cols-1 mx-auto mt-5 gap-6">
-
+            <div class="flex justify-center px-4 sm:px-6 lg:px-10 mb-8">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-6 gap-6 w-full max-w-[1600px]">
                     @foreach ($products as $product)
                         <div
-                            class="border border-blue_gray rounded-lg flex flex-col justify-between p-4 w-72 shadow-sm hover:shadow-md transition">
+                            class="border border-blue_gray rounded-lg flex flex-col justify-between p-4 shadow-sm hover:shadow-md transition w-full">
                             {{-- Top --}}
                             <div class="flex justify-between items-center mb-2">
                                 {{-- Stars --}}
@@ -97,7 +100,7 @@
                                 </div>
 
                                 {{-- Favorite and Cart --}}
-                                <div class="text-gray-500 text-xl flex gap-4 items-center">
+                                <div class="text-gray-500 text-xl flex gap-3 items-center">
                                     <button class="hover:text-blue_purple transition">
                                         <i class="ri-shopping-cart-2-line"></i>
                                     </button>
@@ -109,7 +112,7 @@
 
                             {{-- Mid --}}
                             <div
-                                class="w-full h-64 flex items-center justify-center overflow-hidden rounded-lg bg-gray-100 mb-4">
+                                class="w-full h-56 sm:h-64 flex items-center justify-center overflow-hidden rounded-lg bg-gray-100 mb-4">
                                 <img src="{{ Storage::url($product->image_path) }}" alt="{{ $product->name }}"
                                     class="w-full h-full object-cover">
                             </div>
@@ -117,7 +120,7 @@
                             {{-- Bottom --}}
                             <div class="flex flex-col gap-1 mb-4">
                                 <h1 class="font-bold text-base_color truncate">{{ $product->name }}</h1>
-                                <span class=" price text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
+                                <span class="price text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
                                 <span class="text-xs text-gray-500 leading-tight">
                                     À vista no Pix <br> ou até 30x no cartão
                                 </span>
@@ -125,17 +128,17 @@
 
                             {{-- Button --}}
                             <div class="flex justify-center">
-                                <a href="product"
-                                    class="uppercase px-16 py-2 bg-dark_blue_gray hover:bg-blue_purple text-white font-semibold rounded-lg transition">
+                                <a href="{{ url('product', Str::slug($product->name)) }}"
+                                    class="uppercase px-12 py-2 bg-dark_blue_gray hover:bg-blue_purple text-white font-semibold rounded-lg transition text-sm sm:text-base">
                                     Comprar
                                 </a>
                             </div>
                         </div>
                     @endforeach
-
-
                 </div>
+            </div>
         </section>
+
     </main>
 
     <script>
