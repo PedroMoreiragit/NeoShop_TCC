@@ -43,7 +43,7 @@
 
                 <a href="{{ route('users') }}"
                     class="flex items-center gap-3 hover:text-light {{ request()->is('users') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
-                    <i class="ri-box-3-line"></i> Clientes</a>
+                    <i class="ri-box-3-line"></i> Usuários</a>
 
                 <a href="{{ route('reports') }}"
                     class="flex items-center gap-3 hover:text-light {{ request()->is('reports') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">

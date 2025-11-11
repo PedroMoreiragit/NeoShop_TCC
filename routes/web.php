@@ -9,10 +9,6 @@ use App\Http\Controllers\Store\StoreController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
-
-
-
-
 //  E-commerce
 
 
@@ -78,7 +74,7 @@ Route::view('error', 'e-commerce.error.error')->name('error');
 
 // Route::middleware(['AdminVerification'])->group(function () {
 
-    Route::view('dashboard', 'dashboard.home')->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
 
     Route::get('products', [ProductController::class, 'showProduct'])->name('products');
 

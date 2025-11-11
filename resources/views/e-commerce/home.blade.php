@@ -117,7 +117,7 @@
                             {{-- Bottom --}}
                             <div class="flex flex-col gap-1 mb-4">
                                 <h1 class="font-bold text-base_color truncate">{{ $product->name }}</h1>
-                                <span class="text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
+                                <span class=" price text-xl text-base_color font-bold">R$ {{ $product->price }}</span>
                                 <span class="text-xs text-gray-500 leading-tight">
                                     À vista no Pix <br> ou até 30x no cartão
                                 </span>
@@ -137,6 +137,21 @@
                 </div>
         </section>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const prices = document.querySelectorAll('.price');
+            prices.forEach(el => {
+                const value = parseFloat(el.textContent.replace(/[^\d,.-]/g, '').replace(',', '.'));
+                if (!isNaN(value)) {
+                    el.textContent = value.toLocaleString('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                    });
+                }
+            });
+        });
+    </script>
 
 
 
