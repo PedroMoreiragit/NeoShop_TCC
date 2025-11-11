@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Store\StoreController;
 use App\Models\Product;
@@ -83,14 +84,20 @@ Route::view('error', 'e-commerce.error.error')->name('error');
 
     Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
     Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
-    Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
-    Route::get('update-product/{id}', [ProductController::class, 'showUpdateProduct'] )->name('update-product');
+    Route::get('update-product/{id}', [ProductController::class, 'showUpdateProduct'])->name('update-product');
     Route::post('update-product/{id}', [ProductController::class, 'updateProduct'])->name('update-product');
+    Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
 
 
     Route::view('orders', 'dashboard.orders')->name('orders');
 
-    Route::view('customers', 'dashboard.customers')->name('customers');
+    Route::get('users', [UserController::class, 'showUsers'])->name('users');
+    Route::get('create-user', [UserController::class, 'showCreateUsers'])->name('create-user');
+    Route::post('create-user', [UserController::class, 'createUser'])->name('create-user');
+    Route::get('update-user/{id}', [UserController::class, 'showUpdateUsers'])->name('update-user');
+    Route::post('update-user/{id}', [UserController::class, 'updateUser'])->name('update-user');
+    Route::delete('delete-user/{id}', [UserController::class, 'deleteUser'])->name('delete-user');
+
 
     Route::view('reports', 'dashboard.reports')->name('reports');
 // });

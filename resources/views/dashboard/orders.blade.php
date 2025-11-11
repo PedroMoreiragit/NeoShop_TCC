@@ -1,6 +1,6 @@
 @extends('layouts.layout_dashboard')
 
-@section('title', 'Pedidos - NeoShop')
+@section('title', 'Pedidos')
 
 @section('content')
 

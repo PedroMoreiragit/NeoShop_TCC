@@ -41,8 +41,8 @@
                     class="flex items-center gap-3 hover:text-light {{ request()->is('orders') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
                     <i class="ri-box-3-line"></i> Pedidos</a>
 
-                <a href="{{ route('customers') }}"
-                    class="flex items-center gap-3 hover:text-light {{ request()->is('customers') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                <a href="{{ route('users') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('users') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
                     <i class="ri-box-3-line"></i> Clientes</a>
 
                 <a href="{{ route('reports') }}"
@@ -50,13 +50,6 @@
                     <i class="ri-box-3-line"></i> Relatórios</a>
 
 
-                {{-- <h2 class="text-light uppercase mt-6 mb-2">Categorias</h2>
-                <a href="#" class="hover:text-light">Hardware</a>
-                <a href="#" class="hover:text-light">PC Gamer</a>
-                <a href="#" class="hover:text-light">Periféricos</a>
-                <a href="#" class="hover:text-light">Componentes</a>
-                <a href="#" class="hover:text-light">Notebooks</a>
-                <a href="#" class="hover:text-light">Promoções</a> --}}
 
                 <div class="mt-auto flex flex-col gap-5">
                     <a href="{{ route('home') }}"
@@ -66,13 +59,14 @@
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
-                            @csrf
-                        </form>
+                        @csrf
+                    </form>
 
-                    <a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class=" rounded-lg transition-colors duration-300 ease-in-out
           text-white hover:text-blue_purple hover:bg-gray-800 lg:text-lg">
-                       <i class="ri-logout-box-line text-lg"></i> Sair
+                        <i class="ri-logout-box-line text-lg"></i> Sair
                     </a>
                 </div>
             </nav>
@@ -89,6 +83,19 @@
             </header>
 
             <main class="flex-1 p-6 overflow-y-auto">
+                <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <x-toast type="error" :message="$error" />
+                        @endforeach
+                    @endif
+
+                    @foreach (['success', 'error', 'warning', 'info'] as $msg)
+                        @if (session($msg))
+                            <x-toast :type="$msg" :message="session($msg)" />
+                        @endif
+                    @endforeach
+                </div>
                 @yield('content')
             </main>
         </div>
@@ -106,6 +113,19 @@
                     sidebar.classList.toggle('hidden');
                 });
             }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach((toast) => {
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'transition', 'duration-500');
+                    setTimeout(() => toast.remove(), 500);
+                }, 7000);
+            });
         });
     </script>
 </body>

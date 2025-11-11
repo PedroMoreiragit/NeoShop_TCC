@@ -56,7 +56,7 @@ class ProductController extends Controller
             'technical_info' => 'nullable|string|max:255',
             'price' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:1',
-            'image_path' => 'nullable|file',
+            'image_path' => 'nullable|file|required',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
@@ -70,6 +70,12 @@ class ProductController extends Controller
         return redirect('products');
     }
 
+    /**
+     * Summary of updateProduct
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProduct(Request $request, $id)
     {
         $validated = $request->validate([

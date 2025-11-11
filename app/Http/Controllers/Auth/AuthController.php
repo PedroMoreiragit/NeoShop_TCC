@@ -6,10 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-
     /**
      * Summary of register
      * @param \Illuminate\Http\Request $request
@@ -23,18 +23,14 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        if ($credentials) {
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                'role_id' => 2
-            ]);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password), // bcrypt corretamente
+            'role_id' => 2
+        ]);
 
-            return redirect()->route('auth.thanks');
-        }
-
-        return redirect()->route('home');
+        return redirect()->route('auth.thanks');
     }
 
     /**
@@ -53,13 +49,14 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::user();
-            if ($user->role->name === 'admin') {
+
+
+            if (optional($user->role)->name === 'admin') {
                 return redirect()->route('dashboard');
             }
+
             return redirect()->route('home');
         }
-
-
 
         return back()->withErrors([
             'email' => 'Credenciais inválidas.',
@@ -78,6 +75,4 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
-
-
 }

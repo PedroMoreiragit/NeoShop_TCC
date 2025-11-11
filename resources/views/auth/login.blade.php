@@ -5,17 +5,7 @@
 
 @section('content')
 
-    <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50">
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                <div
-                    class="toast relative px-4 py-2 bg-red-100 border border-red-300 text-red-600 rounded-lg shadow-md overflow-hidden">
-                    {{ $error }}
-                    <div class="progress-bar absolute bottom-0 left-0 h-1 bg-red-400 w-full"></div>
-                </div>
-            @endforeach
-        @endif
-    </div>
+
 
     <div class="reveal">
         {{-- Logo --}}
@@ -91,17 +81,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toasts = document.querySelectorAll('.toast');
-            toasts.forEach((toast) => {
-                setTimeout(() => {
-                    toast.classList.add('opacity-0', 'transition', 'duration-500');
-                    setTimeout(() => toast.remove(), 500);
-                }, 7000);
-            });
-        });
-    </script>
+
 
     {{-- Eye password --}}
     <script>

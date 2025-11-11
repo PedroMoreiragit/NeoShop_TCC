@@ -13,11 +13,6 @@ class DashboardController extends Controller
 
     }
 
-    //Criar um controller separado pois é um crud de customers
-    public function customers()
-    {
-
-    }
 
     //crud
     public function orders()

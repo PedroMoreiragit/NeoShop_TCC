@@ -20,10 +20,33 @@
 
 <body class="flex flex-col items-center justify-center min-h-screen bg-grid">
 
-@yield('content')
+    <div id="toast-container" class="fixed top-5 right-5 space-y-2 z-50">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <x-toast type="error" :message="$error" />
+            @endforeach
+        @endif
+
+        @foreach (['success', 'error', 'warning', 'info'] as $msg)
+            @if (session($msg))
+                <x-toast :type="$msg" :message="session($msg)" />
+            @endif
+        @endforeach
+    </div>
+    @yield('content')
 
 
-
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach((toast) => {
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'transition', 'duration-500');
+                    setTimeout(() => toast.remove(), 500);
+                }, 7000);
+            });
+        });
+    </script>
 </body>
 
 </html>
