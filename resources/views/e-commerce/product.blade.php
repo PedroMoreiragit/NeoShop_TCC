@@ -1,6 +1,6 @@
 @extends('layouts.layout_ecommerce')
 
-@section('title', 'nome do produto')
+@section('title', $product->name)
 
 
 @section('content')
@@ -67,7 +67,7 @@
 
                         @if ($relatedProducts->isNotEmpty())
                             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                                @foreach ($relatedProducts as $related)
+                                @foreach ($relatedProducts->take(5) as $related)
                                     <a href="{{ url('product', Str::slug($related->name)) }}">
                                         <div
                                             class="border border-blue_gray p-3 flex flex-col items-center rounded-md hover:shadow-lg transition">
@@ -177,7 +177,7 @@
                 </div>
 
                 <div class="flex flex-wrap gap-5 gap-y-8 justify-center">
-                    @foreach ($products as $product)
+                    @foreach ($products->take(5) as $product)
                         <div
                             class="border border-blue_gray rounded-lg flex flex-col justify-between p-4 w-72 shadow-sm hover:shadow-md transition">
                             {{-- Top --}}
@@ -237,7 +237,7 @@
             const prices = document.querySelectorAll('.price');
 
             prices.forEach(priceElement => {
-                // Pega o texto e remove tudo que não for número, vírgula ou ponto
+
                 const cleanText = priceElement.textContent.replace(/[^\d.,]/g, '').replace(',', '.');
                 const value = parseFloat(cleanText);
 
@@ -251,18 +251,18 @@
         });
     </script>
     <script>
-        // Suponha que o valor do produto venha do Blade
-        const productPrice = {{ $product->price }}; // exemplo: 3166.50
 
-        // Calcula parcelas (10x sem juros)
+        const productPrice = {{ $product->price }};
+
+
         const installmentCount = 10;
         const installmentValue = (productPrice / installmentCount).toFixed(2);
 
-        // Calcula valor à vista com 10% de desconto
+
         const discount = 0.10;
         const priceWithDiscount = (productPrice * (1 - discount)).toFixed(2);
 
-        // Formata para R$ corretamente
+
         const formatCurrency = (value) => {
             return value.toLocaleString('pt-BR', {
                 style: 'currency',
@@ -270,7 +270,7 @@
             });
         };
 
-        // Monta o texto final
+
         document.getElementById('installmentText').innerText =
             `Em até ${installmentCount}x de ${formatCurrency(installmentValue)} sem juros no cartão ` +
             `Ou em 1x no cartão com 10% OFF (${formatCurrency(priceWithDiscount)})`;

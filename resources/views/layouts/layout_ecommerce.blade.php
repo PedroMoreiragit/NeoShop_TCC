@@ -53,17 +53,17 @@
                         <div class="lg:flex items-center hidden lg:visible">
                             <i class="ri-account-circle-fill text-6xl text-white"></i>
                             <div>
-                                <span class="text-white font-semibold text-xs"><a href="login"
+                                <span class="text-white font-semibold text-xs"><a href="{{ route('login') }}"
                                         class="hover:text-blue_purple hover:underline hover:underline-offset-2">ENTRE</a>
                                     ou <br> <a class="hover:text-blue_purple hover:underline hover:underline-offset-2"
-                                        href="register">CADASTRE-SE</a></span>
+                                        href="{{ route('register') }}">CADASTRE-SE</a></span>
                             </div>
                         </div>
                     @endguest
 
                     @auth
                         <div class="lg:flex items-center hidden lg:visible">
-                            <a href="account">
+                            <a href="{{ route('account') }}">
                                 <i class="ri-account-circle-fill text-6xl text-white"></i>
                             </a>
                         </div>
@@ -147,9 +147,9 @@
 
                 @guest
                     <div class="mt-8 flex flex-col gap-5 text-center text-xl">
-                        <a href="login"
+                        <a href="{{ route('login') }}"
                             class="w-full bg-base_color hover:bg-dark font-bold text-white py-2 rounded-lg">ENTRE</a>
-                        <a href="register"
+                        <a href="{{ route('register') }}"
                             class="w-full mt-2 text-white text-sm font-bold hover:text-blue_purple">CADASTRE-SE</a>
                     </div>
                 @endguest

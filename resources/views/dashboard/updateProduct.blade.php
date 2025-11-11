@@ -10,7 +10,7 @@
                 Cadastrar Novo Produto
             </h1>
 
-            <a href="products"
+            <a href="{{ route('products') }}"
                 class="bg-base_color text-white font-semibold px-4 py-2 rounded-lg hover:bg-blue_purple transition duration-200 flex items-center gap-2">
                 <i class="ri-arrow-go-back-line text-lg"></i>
                 Voltar
