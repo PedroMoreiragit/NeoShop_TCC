@@ -72,15 +72,11 @@
         {{-- Products list --}}
         <section>
             {{-- Title --}}
-            <div
-                class="bg-blue_gray py-5 px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div class="bg-blue_gray py-5 px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row  items-center gap-3">
+                <i class="ri-star-fill text-xl text-white"></i>
                 <h1 class="uppercase text-white text-xl sm:text-2xl font-bold text-center sm:text-left">
                     Produtos em destaque
                 </h1>
-                <div class="text-white flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                    <span class="uppercase text-base sm:text-xl">Termina em <i class="ri-time-line"></i></span>
-                    <span class="text-lg sm:text-xl font-bold">24:00:00</span>
-                </div>
             </div>
 
             {{-- Products --}}

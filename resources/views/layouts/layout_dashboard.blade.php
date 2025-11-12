@@ -37,13 +37,17 @@
                     class="flex items-center gap-3 hover:text-light {{ request()->is('products') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
                     <i class="ri-box-3-line"></i> Produtos</a>
 
-                <a href="{{ route('orders') }}"
-                    class="flex items-center gap-3 hover:text-light {{ request()->is('orders') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
-                    <i class="ri-box-3-line"></i> Pedidos</a>
-
                 <a href="{{ route('users') }}"
                     class="flex items-center gap-3 hover:text-light {{ request()->is('users') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
                     <i class="ri-box-3-line"></i> Usuários</a>
+
+                <a href="{{ route('categories') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('categories') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-price-tag-line"></i> Categorias</a>
+
+                <a href="{{ route('orders') }}"
+                    class="flex items-center gap-3 hover:text-light {{ request()->is('orders') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">
+                    <i class="ri-box-3-line"></i> Pedidos</a>
 
                 <a href="{{ route('reports') }}"
                     class="flex items-center gap-3 hover:text-light {{ request()->is('reports') ? 'text-base_color bg-dark_blue_gray px-3 py-2 rounded' : '' }}">

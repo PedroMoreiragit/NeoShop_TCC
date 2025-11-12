@@ -9,7 +9,7 @@ class Product extends Model
 {
 
 
-     use HasFactory;
+    use HasFactory;
 
     /**
      * Summary of table
@@ -43,4 +43,14 @@ class Product extends Model
         'stock' => 'integer',
         'category_id' => 'integer',
     ];
+
+    /**
+     * Summary of category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo<Category, Product>
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
 }

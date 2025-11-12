@@ -11,8 +11,10 @@ class DashboardController extends Controller
 {
     public function showDashboard()
     {
-        $productCount = Product::count();
-        $totalPriceInStock = Product::sum('price');
+        $productCount = Product::sum('stock');
+        $totalPriceInStock = Product::selectRaw('SUM(price * COALESCE(stock, 0)) as total')
+            ->value('total');
+        $totalPriceInStock = (float) $totalPriceInStock;
         $usersCount = User::count();
         return view('dashboard.home', compact('productCount', 'usersCount', 'totalPriceInStock'));
     }

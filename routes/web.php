@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -74,28 +74,36 @@ Route::view('error', 'e-commerce.error.error')->name('error');
 
 // Route::middleware(['AdminVerification'])->group(function () {
 
-    Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
 
-    Route::get('products', [ProductController::class, 'showProduct'])->name('products');
+Route::get('products', [ProductController::class, 'showProduct'])->name('products');
 
-    Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
-    Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
-    Route::get('update-product/{id}', [ProductController::class, 'showUpdateProduct'])->name('update-product');
-    Route::post('update-product/{id}', [ProductController::class, 'updateProduct'])->name('update-product');
-    Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
-
-
-    Route::view('orders', 'dashboard.orders')->name('orders');
-
-    Route::get('users', [UserController::class, 'showUsers'])->name('users');
-    Route::get('create-user', [UserController::class, 'showCreateUsers'])->name('create-user');
-    Route::post('create-user', [UserController::class, 'createUser'])->name('create-user');
-    Route::get('update-user/{id}', [UserController::class, 'showUpdateUsers'])->name('update-user');
-    Route::post('update-user/{id}', [UserController::class, 'updateUser'])->name('update-user');
-    Route::delete('delete-user/{id}', [UserController::class, 'deleteUser'])->name('delete-user');
+Route::get('create-product', [ProductController::class, 'showCreateForm'])->name('create-product');
+Route::post('create-product', [ProductController::class, 'createProduct'])->name('store-product');
+Route::get('update-product/{id}', [ProductController::class, 'showUpdateProduct'])->name('update-product');
+Route::post('update-product/{id}', [ProductController::class, 'updateProduct'])->name('update-product');
+Route::delete('delete-product/{id}', [ProductController::class, 'deleteProduct'])->name('delete-product');
 
 
-    Route::view('reports', 'dashboard.reports')->name('reports');
+Route::get('users', [UserController::class, 'showUsers'])->name('users');
+Route::get('create-user', [UserController::class, 'showCreateUsers'])->name('create-user');
+Route::post('create-user', [UserController::class, 'createUser'])->name('create-user');
+Route::get('update-user/{id}', [UserController::class, 'showUpdateUsers'])->name('update-user');
+Route::post('update-user/{id}', [UserController::class, 'updateUser'])->name('update-user');
+Route::delete('delete-user/{id}', [UserController::class, 'deleteUser'])->name('delete-user');
+
+
+Route::get('categories', [CategoryController::class, 'showCategories'])->name('categories');
+Route::get('create-category', [CategoryController::class, 'showCreateCategory'])->name('create-category');
+Route::post('create-category', [CategoryController::class, 'createCategory'])->name('create-category');
+Route::get('update-category/{id}', [CategoryController::class, 'showUpdateCategory'])->name('edit-category');
+Route::post('update-category/{id}', [CategoryController::class, 'updateCategory'])->name('update-category');
+Route::delete('delete-category^/{id}', [CategoryController::class, 'deleteCategory'])->name('delete-category');
+
+
+Route::view('orders', 'dashboard.orders')->name('orders');
+
+Route::view('reports', 'dashboard.reports')->name('reports');
 // });
 
 
