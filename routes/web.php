@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChartController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -75,6 +76,11 @@ Route::view('error', 'e-commerce.error.error')->name('error');
 // Route::middleware(['AdminVerification'])->group(function () {
 
 Route::get('dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+Route::get('/chart/stock', [ChartController::class, 'stock']);
+Route::get('/chart/categories', [ChartController::class, 'getCategoryData']);
+
+
+
 
 Route::get('products', [ProductController::class, 'showProduct'])->name('products');
 

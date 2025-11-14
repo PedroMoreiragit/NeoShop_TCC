@@ -3,33 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function showDashboard()
     {
-        $productCount = Product::sum('stock');
         $totalPriceInStock = Product::selectRaw('SUM(price * COALESCE(stock, 0)) as total')
             ->value('total');
+
         $totalPriceInStock = (float) $totalPriceInStock;
+        $recentUsers = User::orderBy('created_at', 'desc')->take(6)->get();
+
+        $totalCategories = Category::count();
+        $productCount = Product::sum('stock');
         $usersCount = User::count();
-        return view('dashboard.home', compact('productCount', 'usersCount', 'totalPriceInStock'));
-    }
 
-
-    //crud
-    public function orders()
-    {
-
-    }
-
-    //crud
-    public function reports()
-    {
-
-
+        return view('dashboard.home', compact(
+            'productCount',
+            'usersCount',
+            'totalPriceInStock',
+            'totalCategories', 'recentUsers'
+        ));
     }
 }
