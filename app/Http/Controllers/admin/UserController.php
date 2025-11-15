@@ -44,6 +44,10 @@ class UserController extends Controller
      */
     public function createUser(Request $request)
     {
+        $request->merge([
+            'cpf' => $request->cpf ? preg_replace('/\D/', '', $request->cpf) : null
+        ]);
+
         $user = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email',
@@ -72,6 +76,10 @@ class UserController extends Controller
     public function updateUser(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
+         $request->merge([
+        'cpf' => $request->cpf ? preg_replace('/\D/', '', $request->cpf) : null
+    ]);
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',

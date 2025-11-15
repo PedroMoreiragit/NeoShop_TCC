@@ -19,7 +19,6 @@ class CategoryController extends Controller
         return view('dashboard.categories', compact('categories'));
     }
 
-
     /**
      * Summary of showCreateCategory
      * @return \Illuminate\Contracts\View\View
@@ -32,11 +31,10 @@ class CategoryController extends Controller
     /**
      * Summary of createCategory
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function createCategory(Request $request)
     {
-
         $validated = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
         ], [
@@ -44,14 +42,13 @@ class CategoryController extends Controller
             'name.required' => 'O nome da categoria é obrigatório.',
         ]);
 
-        if ($validated) {
-            Category::create([
-                'name.unique' => $validated['name'],
-                'slug' => Str::slug($validated['name'])
-            ]);
-        }
+        Category::create([
+            'name' => $validated['name'],
+            'slug' => Str::slug($validated['name'])
+        ]);
 
-        return view('dashboard.categories');
+        return redirect()->route('categories')
+                         ->with('success', 'Categoria criada com sucesso!');
     }
 
     /**
@@ -61,9 +58,7 @@ class CategoryController extends Controller
      */
     public function showUpdateCategory($id)
     {
-
         $category = Category::findOrFail($id);
-
         return view('dashboard.updateCategory', compact('category'));
     }
 
@@ -71,31 +66,39 @@ class CategoryController extends Controller
      * Summary of updateCategory
      * @param \Illuminate\Http\Request $request
      * @param mixed $id
-     * @return \Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function updateCategory(Request $request, $id)
     {
+        $category = Category::findOrFail($id);
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name',
+            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
         ], [
             'name.unique' => 'Essa categoria já existe!',
             'name.required' => 'O nome da categoria é obrigatório.',
         ]);
 
-        $category = Category::findOrFail($id);
-        $category->update($validated);
+        $category->update([
+            'name' => $validated['name'],
+            'slug' => Str::slug($validated['name'])
+        ]);
 
-        $categories = Category::all();
-        return view('dashboard.categories', compact('categories'));
+        return redirect()->route('categories')
+                         ->with('success', 'Categoria atualizada com sucesso!');
     }
 
+    /**
+     * Summary of deleteCategory
+     * @param mixed $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deleteCategory($id)
     {
         $category = Category::findOrFail($id);
         $category->delete();
 
-        $categories = Category::all();
-        return view('dashboard.categories', compact('categories'));
+        return redirect()->route('categories')
+                         ->with('success', 'Categoria excluída com sucesso!');
     }
 }

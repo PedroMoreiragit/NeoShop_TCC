@@ -90,7 +90,7 @@
 
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach ($recentUsers as $user)
+            @foreach ($recentUsers->take(3) as $user)
                 <div class="bg-gray-800 border border-gray-700 rounded-2xl p-5 flex items-center justify-between h-32">
                     <div>
                         <p class="text-base_color font-semibold text-lg">{{ $user->name }}</p>
