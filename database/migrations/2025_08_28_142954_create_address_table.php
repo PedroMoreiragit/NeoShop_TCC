@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->timestamps();
             $table->engine = 'InnoDB';
 
-            // Ajustado para users
+
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');

@@ -32,7 +32,7 @@ Route::view('cart', 'e-commerce.cart')->name('cart');
 Route::middleware(['auth'])->group(function () {
 
     // Account
-    Route::view('account', 'e-commerce.profile')->name('account');
+    Route::get('account', [StoreController::class, 'account'])->name('account');
 
     // Edit Profile
     Route::view('edit-profile', 'e-commerce.profileEdit')->name('edit-profile');

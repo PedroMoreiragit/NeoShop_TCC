@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class StoreController extends Controller
@@ -41,5 +43,14 @@ class StoreController extends Controller
             ->get();
 
         return view('e-commerce.product', compact('product', 'images', 'products', 'relatedProducts'));
+    }
+
+
+    public function account()
+    {
+
+        $user = Auth::user();
+
+        return view('e-commerce.profile', compact('user'));
     }
 }
